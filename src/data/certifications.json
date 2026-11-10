@@ -1,0 +1,34 @@
+[
+  {
+    "id": "cert-1",
+    "title": "Certificación 1",
+    "entity": "[Por definir]",
+    "number": "[Por definir]",
+    "validity": "[Por definir]",
+    "imageAlt": "Imagen del certificado 1"
+  },
+  {
+    "id": "cert-2",
+    "title": "Certificación 2",
+    "entity": "[Por definir]",
+    "number": "[Por definir]",
+    "validity": "[Por definir]",
+    "imageAlt": "Imagen del certificado 2"
+  },
+  {
+    "id": "cert-3",
+    "title": "Certificación 3",
+    "entity": "[Por definir]",
+    "number": "[Por definir]",
+    "validity": "[Por definir]",
+    "imageAlt": "Imagen del certificado 3"
+  },
+  {
+    "id": "cert-4",
+    "title": "Certificación 4",
+    "entity": "[Por definir]",
+    "number": "[Por definir]",
+    "validity": "[Por definir]",
+    "imageAlt": "Imagen del certificado 4"
+  }
+]

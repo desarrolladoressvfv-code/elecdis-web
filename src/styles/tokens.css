@@ -1,0 +1,303 @@
+/* ============================================================
+   ELECDIS – Design Tokens v2
+   Estética: circuit board · dark precision · electric
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+:root {
+  /* ── Paleta C — Grafito Profesional (fondo claro) ── */
+  --c-bg:          #F3F4F6;   /* secciones gris neutro claro */
+  --c-bg-2:        #FFFFFF;   /* secciones blancas */
+  --c-bg-3:        #E5E7EB;   /* inputs, tarjetas sobre gris */
+
+  --c-dark:        #111827;   /* secciones oscuras (Contact) */
+  --c-darker:      #0D1117;   /* footer */
+
+  --c-border:      rgba(17,24,39,0.10);
+  --c-border-2:    rgba(17,24,39,0.16);
+
+  /* Acento eléctrico – azul intenso */
+  --c-electric:     #1D4ED8;
+  --c-electric-dim: #1E40AF;
+  --c-electric-glow: rgba(29,78,216,0.12);
+
+  /* Acento cálido – ámbar */
+  --c-amber:       #D97706;
+  --c-amber-dim:   #B45309;
+  --c-amber-glow:  rgba(217,119,6,0.12);
+
+  /* Texto oscuro sobre fondos claros */
+  --c-text:        #111827;
+  --c-text-muted:  #374151;
+  --c-text-faint:  #9CA3AF;
+
+  /* Estados */
+  --c-success:     #15803D;
+  --c-error:       #DC2626;
+
+  /* ── Tipografía ── */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --text-xs:   0.72rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+  --text-6xl:  3.75rem;
+
+  --w-light:  300;
+  --w-normal: 400;
+  --w-medium: 500;
+  --w-semi:   600;
+  --w-bold:   700;
+  --w-black:  800;
+
+  --lead-tight:  1.1;
+  --lead-snug:   1.3;
+  --lead-normal: 1.65;
+
+  /* ── Espaciados ── */
+  --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3: 0.75rem;
+  --s-4:  1rem;     --s-5:  1.25rem;  --s-6: 1.5rem;
+  --s-8:  2rem;     --s-10: 2.5rem;   --s-12: 3rem;
+  --s-16: 4rem;     --s-20: 5rem;     --s-24: 6rem;
+  --s-32: 8rem;
+
+  /* ── Bordes y sombras ── */
+  --r-sm:   0.375rem;
+  --r-md:   0.75rem;
+  --r-lg:   1.25rem;
+  --r-full: 9999px;
+
+  --shadow-glow-blue:  0 0 24px rgba(29,78,216,0.22);
+  --shadow-glow-amber: 0 0 20px rgba(217,119,6,0.2);
+  --shadow-card:       0 2px 12px rgba(0,0,0,0.07);
+  --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.13);
+
+  /* ── Layout ── */
+  --container: 1200px;
+  --gutter:    clamp(1rem, 4vw, 1.5rem);
+  --section-y: clamp(4rem, 8vw, 7rem);
+
+  /* ── Header (claro/translúcido) ── */
+  --c-header-glass:    rgba(255,255,255,0.90);
+  --c-header-scrolled: rgba(255,255,255,0.98);
+  --c-header-shadow:   rgba(17,24,39,0.08);
+
+  /* ── Stat card (sobre fondo claro en hero) ── */
+  --c-stat-card:       rgba(255,255,255,0.80);
+  --c-stat-hover:      rgba(29,78,216,0.08);
+
+  /* ── Electric button text ── */
+  --c-electric-btn-text: #fff;
+
+  /* ── Hero gradient (claro con acento sutil) ── */
+  --c-hero-gradient: radial-gradient(ellipse 70% 60% at 65% 40%, rgba(29,78,216,0.07) 0%, transparent 65%), #F3F4F6;
+
+  /* ── Transición ── */
+  --t: 0.25s cubic-bezier(0.4,0,0.2,1);
+  --t-slow: 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  color: var(--c-text);
+  background: var(--c-bg);
+  line-height: var(--lead-normal);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img, video, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+
+/* ============================================================
+   Utilidades globales
+   ============================================================ */
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+/* Encabezados de sección */
+.sh {                              /* section header */
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.sh--center { text-align: center; }
+.sh--center .sh__sub { margin-inline: auto; }
+
+.sh__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--w-semi);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-electric);
+  margin-bottom: var(--s-4);
+}
+.sh__eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--c-electric);
+}
+
+.sh__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 4.5vw, var(--text-5xl));
+  font-weight: var(--w-bold);
+  line-height: var(--lead-tight);
+  color: var(--c-text);
+  margin-bottom: var(--s-5);
+}
+
+.sh__sub {
+  font-size: var(--text-lg);
+  color: var(--c-text-muted);
+  line-height: var(--lead-normal);
+  max-width: 560px;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 0.7em 1.6em;
+  border-radius: var(--r-sm);
+  font-family: var(--font-body);
+  font-weight: var(--w-semi);
+  font-size: var(--text-base);
+  transition: transform var(--t), box-shadow var(--t), background var(--t), color var(--t);
+  white-space: nowrap;
+}
+
+.btn--electric {
+  background: var(--c-electric);
+  color: var(--c-electric-btn-text);
+}
+.btn--electric:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.btn--amber {
+  background: var(--c-amber);
+  color: #000;
+}
+.btn--amber:hover {
+  background: #FFC933;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-amber);
+}
+
+.btn--ghost {
+  border: 1px solid var(--c-border-2);
+  color: var(--c-text);
+  background: transparent;
+}
+.btn--ghost:hover {
+  border-color: var(--c-electric);
+  color: var(--c-electric);
+  background: var(--c-electric-glow);
+  transform: translateY(-2px);
+}
+
+.btn--ghost-dark {
+  border: 1px solid rgba(0,0,0,0.2);
+  color: #0A1525;
+  background: transparent;
+}
+.btn--ghost-dark:hover {
+  background: rgba(0,0,0,0.08);
+}
+
+/* Placeholder de imagen */
+.img-ph {
+  width: 100%;
+  background: var(--c-bg-3);
+  border: 1.5px dashed var(--c-border-2);
+  border-radius: var(--r-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  color: var(--c-text-faint);
+  font-size: var(--text-xs);
+  font-weight: var(--w-medium);
+  min-height: 200px;
+  user-select: none;
+  letter-spacing: 0.04em;
+}
+.img-ph svg { opacity: 0.3; }
+
+/* Chip / badge */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  padding: 0.2em 0.75em;
+  border-radius: var(--r-full);
+  font-size: var(--text-xs);
+  font-weight: var(--w-semi);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.chip--electric {
+  background: rgba(29,78,216,0.1);
+  color: var(--c-electric);
+  border: 1px solid rgba(29,78,216,0.2);
+}
+.chip--amber {
+  background: rgba(217,119,6,0.1);
+  color: var(--c-amber);
+  border: 1px solid rgba(217,119,6,0.2);
+}
+
+/* Línea decorativa circuito */
+.circuit-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-electric), transparent);
+  opacity: 0.3;
+}
+
+/* ============================================================
+   Animaciones scroll
+   ============================================================ */
+[data-anim] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+[data-anim].visible { opacity: 1; transform: none; }
+[data-anim-delay="1"] { transition-delay: 0.08s; }
+[data-anim-delay="2"] { transition-delay: 0.18s; }
+[data-anim-delay="3"] { transition-delay: 0.28s; }
+[data-anim-delay="4"] { transition-delay: 0.38s; }
+
+
+

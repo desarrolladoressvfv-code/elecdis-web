@@ -1,0 +1,90 @@
+---
+import site from '../data/site.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  pageUrl?: string;
+}
+
+const {
+  title = site.seo.title,
+  description = site.seo.description,
+  ogImage = '/og-image.jpg',
+  pageUrl = Astro.url.pathname
+} = Astro.props;
+
+const canonicalUrl = `https://www.elecdis.cl${pageUrl}`;
+
+const structuredData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ElectricalContractor",
+  "name": site.name,
+  "url": "https://www.elecdis.cl",
+  "telephone": site.contact.phoneDisplay,
+  "email": site.contact.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": site.contact.address,
+    "addressLocality": "Santiago",
+    "addressCountry": "CL"
+  },
+  "description": site.description,
+  "areaServed": "Santiago, Chile"
+});
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1E293B" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content={site.seo.locale} />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={structuredData} />
+
+  <!-- Fonts & styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+
+  <slot name="head" />
+</head>
+<body>
+  <slot />
+
+  <!-- Script de animaciones IntersectionObserver -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('[data-anim]').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

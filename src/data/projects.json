@@ -1,0 +1,104 @@
+[
+  {
+    "slug": "proyecto-1",
+    "title": "Proyecto 1",
+    "client": "[Por definir]",
+    "location": "[Por definir]",
+    "year": "[Por definir]",
+    "sector": "Sector 1",
+    "sectorId": "sector-1",
+    "summary": "Descripción breve del proyecto para la grilla.",
+    "description": "Descripción del proyecto: alcance, trabajos realizados, plazo y resultado. Este campo reemplaza con el texto definitivo que entregue ELECDIS.",
+    "coverAlt": "Foto principal Proyecto 1",
+    "images": [
+      { "alt": "Foto principal Proyecto 1" },
+      { "alt": "Foto 2 Proyecto 1" },
+      { "alt": "Foto 3 Proyecto 1" }
+    ]
+  },
+  {
+    "slug": "proyecto-2",
+    "title": "Proyecto 2",
+    "client": "[Por definir]",
+    "location": "[Por definir]",
+    "year": "[Por definir]",
+    "sector": "Sector 2",
+    "sectorId": "sector-2",
+    "summary": "Descripción breve del proyecto para la grilla.",
+    "description": "Descripción del proyecto: alcance, trabajos realizados, plazo y resultado. Este campo reemplaza con el texto definitivo que entregue ELECDIS.",
+    "coverAlt": "Foto principal Proyecto 2",
+    "images": [
+      { "alt": "Foto principal Proyecto 2" },
+      { "alt": "Foto 2 Proyecto 2" },
+      { "alt": "Foto 3 Proyecto 2" }
+    ]
+  },
+  {
+    "slug": "proyecto-3",
+    "title": "Proyecto 3",
+    "client": "[Por definir]",
+    "location": "[Por definir]",
+    "year": "[Por definir]",
+    "sector": "Sector 3",
+    "sectorId": "sector-3",
+    "summary": "Descripción breve del proyecto para la grilla.",
+    "description": "Descripción del proyecto: alcance, trabajos realizados, plazo y resultado. Este campo reemplaza con el texto definitivo que entregue ELECDIS.",
+    "coverAlt": "Foto principal Proyecto 3",
+    "images": [
+      { "alt": "Foto principal Proyecto 3" },
+      { "alt": "Foto 2 Proyecto 3" },
+      { "alt": "Foto 3 Proyecto 3" }
+    ]
+  },
+  {
+    "slug": "proyecto-4",
+    "title": "Proyecto 4",
+    "client": "[Por definir]",
+    "location": "[Por definir]",
+    "year": "[Por definir]",
+    "sector": "Sector 1",
+    "sectorId": "sector-1",
+    "summary": "Descripción breve del proyecto para la grilla.",
+    "description": "Descripción del proyecto: alcance, trabajos realizados, plazo y resultado. Este campo reemplaza con el texto definitivo que entregue ELECDIS.",
+    "coverAlt": "Foto principal Proyecto 4",
+    "images": [
+      { "alt": "Foto principal Proyecto 4" },
+      { "alt": "Foto 2 Proyecto 4" },
+      { "alt": "Foto 3 Proyecto 4" }
+    ]
+  },
+  {
+    "slug": "proyecto-5",
+    "title": "Proyecto 5",
+    "client": "[Por definir]",
+    "location": "[Por definir]",
+    "year": "[Por definir]",
+    "sector": "Sector 2",
+    "sectorId": "sector-2",
+    "summary": "Descripción breve del proyecto para la grilla.",
+    "description": "Descripción del proyecto: alcance, trabajos realizados, plazo y resultado. Este campo reemplaza con el texto definitivo que entregue ELECDIS.",
+    "coverAlt": "Foto principal Proyecto 5",
+    "images": [
+      { "alt": "Foto principal Proyecto 5" },
+      { "alt": "Foto 2 Proyecto 5" },
+      { "alt": "Foto 3 Proyecto 5" }
+    ]
+  },
+  {
+    "slug": "proyecto-6",
+    "title": "Proyecto 6",
+    "client": "[Por definir]",
+    "location": "[Por definir]",
+    "year": "[Por definir]",
+    "sector": "Sector 3",
+    "sectorId": "sector-3",
+    "summary": "Descripción breve del proyecto para la grilla.",
+    "description": "Descripción del proyecto: alcance, trabajos realizados, plazo y resultado. Este campo reemplaza con el texto definitivo que entregue ELECDIS.",
+    "coverAlt": "Foto principal Proyecto 6",
+    "images": [
+      { "alt": "Foto principal Proyecto 6" },
+      { "alt": "Foto 2 Proyecto 6" },
+      { "alt": "Foto 3 Proyecto 6" }
+    ]
+  }
+]

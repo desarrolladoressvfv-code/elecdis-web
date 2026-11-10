@@ -1,0 +1,155 @@
+---
+import site from '../data/site.json';
+import Logo from './Logo.astro';
+const year = new Date().getFullYear();
+---
+<footer class="footer" role="contentinfo">
+  <!-- Divisor superior con trazo de circuito -->
+  <div class="footer__circuit" aria-hidden="true">
+    <svg viewBox="0 0 1200 24" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="12" x2="420" y2="12" stroke="rgba(0,194,255,0.15)" stroke-width="1"/>
+      <circle cx="420" cy="12" r="3" fill="rgba(0,194,255,0.3)"/>
+      <line x1="423" y1="12" x2="500" y2="12" stroke="rgba(0,194,255,0.15)" stroke-width="1"/>
+      <line x1="500" y1="12" x2="500" y2="4" stroke="rgba(0,194,255,0.15)" stroke-width="1"/>
+      <line x1="500" y1="4" x2="700" y2="4" stroke="rgba(0,194,255,0.15)" stroke-width="1"/>
+      <line x1="700" y1="4" x2="700" y2="12" stroke="rgba(0,194,255,0.15)" stroke-width="1"/>
+      <circle cx="700" cy="12" r="3" fill="rgba(255,184,0,0.4)"/>
+      <line x1="703" y1="12" x2="1200" y2="12" stroke="rgba(0,194,255,0.15)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="/" aria-label="ELECDIS – Inicio" class="footer__logo">
+        <Logo class="footer__logo-svg" />
+      </a>
+      <p class="footer__tagline">{site.slogan}</p>
+      <p class="footer__sub">{site.description}</p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Pie de página">
+      <h3 class="footer__heading">Navegación</h3>
+      <ul>
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/#sectores">Sectores</a></li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/#certificaciones">Certificaciones</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer__contact">
+      <h3 class="footer__heading">Contacto</h3>
+      <ul>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {site.contact.address}
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href={`tel:${site.contact.phone}`}>{site.contact.phoneDisplay}</a>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>© {year} ELECDIS SpA. Todos los derechos reservados.</p>
+      <p>Desarrollado por <strong>BiKloud</strong></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.footer {
+  background: #0D1117;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  color: #9CA3AF;
+  --c-text: #F9FAFB;
+  --c-text-muted: #9CA3AF;
+  --c-text-faint: #6B7280;
+  --c-border: rgba(255,255,255,0.07);
+  --c-electric: #60A5FA;
+}
+
+.footer__circuit {
+  height: 24px;
+  overflow: hidden;
+}
+.footer__circuit svg { width: 100%; height: 100%; }
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-10);
+  padding-block: var(--s-16);
+}
+
+.footer__logo { display: inline-flex; color: #F9FAFB; margin-bottom: var(--s-4); transition: color var(--t); }
+.footer__logo:hover { color: var(--c-electric); }
+:global(.footer__logo-svg) { height: 72px; width: auto; }
+
+.footer__tagline {
+  font-size: var(--text-sm);
+  color: var(--c-text);
+  margin-bottom: var(--s-2);
+}
+.footer__sub { font-size: var(--text-sm); color: var(--c-text-faint); }
+
+.footer__heading {
+  font-size: var(--text-xs);
+  font-weight: var(--w-semi);
+  color: var(--c-electric);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--s-4);
+}
+
+.footer__nav ul,
+.footer__contact ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.footer__nav a {
+  font-size: var(--text-sm);
+  color: var(--c-text-muted);
+  transition: color var(--t);
+}
+.footer__nav a:hover { color: var(--c-electric); }
+
+.footer__contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  font-size: var(--text-sm);
+}
+.footer__contact svg { margin-top: 2px; color: var(--c-electric); flex-shrink: 0; }
+.footer__contact a { transition: color var(--t); }
+.footer__contact a:hover { color: var(--c-electric); }
+
+.footer__bottom {
+  border-top: 1px solid var(--c-border);
+}
+.footer__bottom-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-block: var(--s-5);
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--c-text-faint);
+}
+.footer__bottom strong { color: var(--c-text-muted); }
+
+@media (min-width: 768px) {
+  .footer__inner { grid-template-columns: 2fr 1fr 1fr; }
+  .footer__bottom-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+}
+</style>

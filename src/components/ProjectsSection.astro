@@ -1,0 +1,151 @@
+---
+import projects from '../data/projects.json';
+const featured = projects.slice(0, 3);
+---
+<section class="section projects-sec" id="proyectos" aria-labelledby="proj-title">
+  <div class="container">
+    <div class="proj-header" data-anim>
+      <div class="sh">
+        <p class="sh__eyebrow">Nuestro trabajo</p>
+        <h2 class="sh__title" id="proj-title">Proyectos Destacados</h2>
+        <p class="sh__sub">
+          Una muestra representativa de los proyectos ejecutados con calidad y certificación SEC.
+        </p>
+      </div>
+      <a href="/proyectos/" class="btn btn--ghost proj-header__cta">
+        Ver todos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <ul class="proj-grid" role="list">
+      {featured.map((p, i) => (
+        <li class="proj-card" data-anim data-anim-delay={String(i + 1)}>
+          <a href={`/proyectos/${p.slug}/`} class="proj-card__img-wrap" tabindex="-1" aria-hidden="true">
+            <div class="img-ph proj-card__img">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>{p.coverAlt}</span>
+            </div>
+          </a>
+
+          <div class="proj-card__body">
+            <div class="proj-card__meta">
+              <span class="chip chip--electric">{p.sector}</span>
+              <span class="proj-card__year">{p.year}</span>
+            </div>
+            <h3 class="proj-card__title">
+              <a href={`/proyectos/${p.slug}/`}>{p.title}</a>
+            </h3>
+            <dl class="proj-card__details">
+              <div><dt>Cliente</dt><dd>{p.client}</dd></div>
+              <div><dt>Ubicación</dt><dd>{p.location}</dd></div>
+            </dl>
+            <a href={`/proyectos/${p.slug}/`} class="proj-card__link">
+              Ver detalle
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.projects-sec { background: var(--c-bg-2); }
+
+.proj-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-6);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  flex-wrap: wrap;
+}
+.proj-header .sh { margin-bottom: 0; }
+.proj-header__cta { align-self: flex-start; margin-top: var(--s-4); }
+
+.proj-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+}
+
+.proj-card {
+  background: var(--c-bg-3);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: border-color var(--t), transform var(--t-slow), box-shadow var(--t-slow);
+}
+.proj-card:hover {
+  border-color: rgba(0,194,255,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.proj-card__img {
+  height: 200px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px dashed var(--c-border);
+  min-height: 200px;
+}
+
+.proj-card__body { padding: var(--s-6); }
+
+.proj-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--s-3);
+}
+
+.proj-card__year {
+  font-size: var(--text-xs);
+  color: var(--c-text-faint);
+}
+
+.proj-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--w-bold);
+  margin-bottom: var(--s-4);
+}
+.proj-card__title a {
+  color: var(--c-text);
+  transition: color var(--t);
+}
+.proj-card__title a:hover { color: var(--c-electric); }
+
+.proj-card__details {
+  display: flex;
+  gap: var(--s-6);
+  margin-bottom: var(--s-5);
+}
+.proj-card__details dt {
+  font-size: var(--text-xs);
+  color: var(--c-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+.proj-card__details dd {
+  font-size: var(--text-sm);
+  font-weight: var(--w-medium);
+  color: var(--c-text-muted);
+}
+
+.proj-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--text-sm);
+  font-weight: var(--w-semi);
+  color: var(--c-electric);
+  transition: gap var(--t);
+}
+.proj-card__link:hover { gap: var(--s-3); }
+
+@media (min-width: 768px) { .proj-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>

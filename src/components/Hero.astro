@@ -1,0 +1,304 @@
+---
+import site from '../data/site.json';
+---
+<section class="hero" id="inicio" aria-label="Portada">
+
+  <!-- Imagen de fondo -->
+  <div class="hero__bg" aria-hidden="true">
+    <img
+      src="/images/fondo-inicio.png"
+      alt=""
+      class="hero__bg-img"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <!-- Overlay: oscurece el lado izquierdo para legibilidad, deja el técnico visible a la derecha -->
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="container hero__content">
+
+    <!-- Texto principal -->
+    <div class="hero__text">
+      <p class="hero__eyebrow" data-anim>
+        <span class="eyebrow__dot"></span>
+        Certificación SEC · Norma RIC-02 · TE-1
+      </p>
+
+      <h1 class="hero__heading" data-anim data-anim-delay="1">
+        <span class="hero__heading-line">Electricidad</span>
+        <span class="hero__heading-line hero__heading-line--accent">&amp; Diseño</span>
+      </h1>
+
+      <p class="hero__sub" data-anim data-anim-delay="2">
+        {site.slogan}<br/>{site.description}
+      </p>
+
+      <div class="hero__ctas" data-anim data-anim-delay="3">
+        <a href="/#contacto" class="btn btn--electric hero__btn">
+          Solicitar cotización
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/proyectos/" class="btn btn--ghost hero__btn hero__btn--ghost">Ver proyectos</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero__stats" data-anim data-anim-delay="4">
+        {site.stats.map(stat => (
+          <div class="stat">
+            <div class="stat__top">
+              <span class="stat__value" data-count={stat.value}>0</span>
+              <span class="stat__suffix">{stat.suffix}</span>
+            </div>
+            <span class="stat__label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Columna derecha vacía: el técnico queda en la imagen de fondo -->
+    <div class="hero__visual-spacer" aria-hidden="true"></div>
+  </div>
+
+  <!-- Indicador de scroll -->
+  <div class="hero__scroll-hint" aria-hidden="true">
+    <span class="scroll-line"></span>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+<style>
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 68px;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* ── Fondo ── */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  display: block;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8, 14, 26, 0.92) 0%,
+    rgba(8, 14, 26, 0.82) 38%,
+    rgba(8, 14, 26, 0.42) 62%,
+    rgba(8, 14, 26, 0.08) 100%
+  );
+}
+
+/* ── Layout ── */
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-10);
+  padding-block: var(--s-16) var(--s-10);
+  align-items: center;
+}
+
+/* ── Texto ── */
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--text-xs);
+  font-weight: var(--w-semi);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #60A5FA;
+  margin-bottom: var(--s-6);
+}
+.eyebrow__dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #60A5FA;
+  box-shadow: 0 0 10px #60A5FA;
+  animation: pulse-dot 2.5s ease infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+.hero__heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--s-6);
+  font-family: var(--font-display);
+  font-weight: var(--w-black);
+  line-height: var(--lead-tight);
+}
+.hero__heading-line {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  color: #fff;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+.hero__heading-line--accent {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #60A5FA;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+}
+
+.hero__sub {
+  font-size: clamp(var(--text-base), 2vw, var(--text-lg));
+  color: rgba(255,255,255,0.78);
+  line-height: var(--lead-normal);
+  max-width: 480px;
+  margin-bottom: var(--s-10);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-bottom: var(--s-12);
+}
+.hero__btn { font-size: var(--text-sm); }
+.hero__btn--ghost {
+  background: transparent !important;
+  border-color: rgba(255,255,255,0.35) !important;
+  color: #fff !important;
+}
+.hero__btn--ghost:hover {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: rgba(255,255,255,0.6) !important;
+}
+
+/* ── Stats ── */
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-5) var(--s-8);
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+.stat__top {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  line-height: 1;
+}
+.stat__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: var(--w-black);
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.stat__suffix {
+  font-size: 1rem;
+  color: #60A5FA;
+  font-weight: var(--w-bold);
+}
+.stat__label {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+}
+
+/* ── Columna derecha (sólo para alinear el layout) ── */
+.hero__visual-spacer { display: none; }
+
+/* ── Scroll hint ── */
+.hero__scroll-hint {
+  position: absolute;
+  bottom: var(--s-10);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-2);
+  z-index: 1;
+}
+.scroll-line {
+  display: block;
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, rgba(96,165,250,0.8), transparent);
+  animation: scroll-grow 2s ease infinite;
+}
+@keyframes scroll-grow {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  60%  { transform: scaleY(1); opacity: 1; }
+  100% { opacity: 0; }
+}
+.scroll-text {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── Responsive ── */
+@media (min-width: 768px) {
+  .hero__content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-10);
+  }
+  .hero__visual-spacer { display: block; }
+  .hero__bg-img { object-position: 65% center; }
+}
+@media (min-width: 1024px) {
+  .hero__content {
+    grid-template-columns: 5fr 6fr;
+    gap: var(--s-16);
+  }
+  .hero__bg-img { object-position: 60% center; }
+}
+</style>
+
+<script>
+function animateCount(el: HTMLElement) {
+  const target = parseInt(el.dataset.count ?? '0', 10);
+  if (!target) return;
+  const duration = 1800;
+  const start = performance.now();
+  const update = (now: number) => {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target).toLocaleString('es-CL');
+    if (p < 1) requestAnimationFrame(update);
+    else el.textContent = target.toLocaleString('es-CL');
+  };
+  requestAnimationFrame(update);
+}
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCount(e.target as HTMLElement);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll<HTMLElement>('[data-count]').forEach(el => obs.observe(el));
+</script>

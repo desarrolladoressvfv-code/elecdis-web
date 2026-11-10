@@ -1,0 +1,100 @@
+---
+import sectors from '../data/sectors.json';
+---
+<section class="section sectors" id="sectores" aria-labelledby="sec-title">
+  <div class="container">
+    <div class="sh sh--center" data-anim>
+      <p class="sh__eyebrow">Dónde operamos</p>
+      <h2 class="sh__title" id="sec-title">Sectores</h2>
+      <p class="sh__sub">
+        Atendemos distintos sectores con soluciones eléctricas adaptadas a cada industria y escala de proyecto.
+      </p>
+    </div>
+
+    <ul class="sectors-grid" role="list">
+      {sectors.map((s, i) => (
+        <li class="sector-card" data-anim data-anim-delay={String(i + 1)}>
+          <div class="sector-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <h3 class="sector-card__title">{s.title}</h3>
+          <p class="sector-card__desc">{s.description}</p>
+          <span class="chip chip--amber sector-card__ph" aria-hidden="true">📌 Placeholder</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.sectors { background: var(--c-bg); }
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+}
+
+.sector-card {
+  position: relative;
+  padding: var(--s-8);
+  background: var(--c-bg-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: border-color var(--t), transform var(--t-slow);
+}
+.sector-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--c-electric), var(--c-amber));
+  opacity: 0;
+  transition: opacity var(--t-slow);
+}
+.sector-card:hover {
+  border-color: rgba(0,194,255,0.2);
+  transform: translateX(4px);
+}
+.sector-card:hover::before { opacity: 1; }
+
+.sector-card__icon {
+  width: 48px;
+  height: 48px;
+  background: var(--c-electric-glow);
+  border: 1px solid rgba(0,194,255,0.2);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-electric);
+  margin-bottom: var(--s-5);
+}
+.sector-card__icon svg { width: 22px; height: 22px; }
+
+.sector-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--w-bold);
+  color: var(--c-text);
+  margin-bottom: var(--s-3);
+}
+
+.sector-card__desc {
+  font-size: var(--text-sm);
+  color: var(--c-text-muted);
+  line-height: var(--lead-normal);
+  margin-bottom: var(--s-4);
+}
+
+.sector-card__ph {
+  font-size: 10px !important;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (min-width: 768px) { .sectors-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "sector-1",
+    "title": "Sector 1",
+    "description": "Descripción del sector: tipos de proyectos atendidos, escala, requerimientos técnicos específicos y valor agregado que aporta ELECDIS en este rubro."
+  },
+  {
+    "id": "sector-2",
+    "title": "Sector 2",
+    "description": "Descripción del sector: tipos de proyectos atendidos, escala, requerimientos técnicos específicos y valor agregado que aporta ELECDIS en este rubro."
+  },
+  {
+    "id": "sector-3",
+    "title": "Sector 3",
+    "description": "Descripción del sector: tipos de proyectos atendidos, escala, requerimientos técnicos específicos y valor agregado que aporta ELECDIS en este rubro."
+  }
+]

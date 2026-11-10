@@ -1,0 +1,25 @@
+{
+  "name": "ELECDIS",
+  "fullName": "Electricidad & Diseño",
+  "slogan": "Soluciones integrales con certificación SEC.",
+  "description": "Especialistas en norma RIC-02 y certificación TE-1.",
+  "contact": {
+    "address": "Haydn #3057, San Joaquín, Santiago",
+    "email": "elecdis.spa@gmail.com",
+    "phone": "+56952327087",
+    "phoneDisplay": "+56 9 5232 7087",
+    "whatsapp": "+56952327087",
+    "whatsappMessage": "Hola ELECDIS, me gustaría solicitar una cotización."
+  },
+  "stats": [
+    { "value": 1200, "suffix": "+", "label": "Cotizaciones" },
+    { "value": 300, "suffix": "+", "label": "Proyectos ejecutados" },
+    { "value": 12,   "suffix": "",  "label": "Certificaciones" },
+    { "value": 200,  "suffix": "+", "label": "Clientes satisfechos" }
+  ],
+  "seo": {
+    "title": "ELECDIS – Electricidad & Diseño | Soluciones eléctricas en Santiago",
+    "description": "ELECDIS SpA, especialistas en instalaciones eléctricas, tableros, proyectos y CCTV con certificación SEC en Santiago de Chile.",
+    "locale": "es_CL"
+  }
+}

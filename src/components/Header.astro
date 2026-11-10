@@ -1,0 +1,225 @@
+---
+import Logo from './Logo.astro';
+interface Props { currentPath?: string; }
+const { currentPath = '/' } = Astro.props;
+---
+<header class="hdr" id="hdr" role="banner">
+  <div class="container hdr__inner">
+
+    <!-- Logo ELECDIS -->
+    <a href="/" class="hdr__logo" aria-label="ELECDIS – Inicio">
+      <Logo class="hdr__logo-svg" />
+    </a>
+
+    <!-- Nav desktop -->
+    <nav class="hdr__nav" aria-label="Navegación principal">
+      <ul class="nav__list" role="list">
+        <li><a href="/#servicios" class="nav__link">Servicios</a></li>
+        <li><a href="/#sectores" class="nav__link">Sectores</a></li>
+        <li>
+          <a
+            href="/proyectos/"
+            class="nav__link"
+            aria-current={currentPath.startsWith('/proyectos') ? 'page' : undefined}
+          >Proyectos</a>
+        </li>
+        <li><a href="/#certificaciones" class="nav__link">Certificaciones</a></li>
+        <li>
+          <a href="/#contacto" class="btn btn--electric nav__cta">
+            Cotizar
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Hamburger -->
+    <button
+      class="hdr__burger"
+      id="burger"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav class="mobile-nav" id="mobile-nav" aria-hidden="true" aria-label="Menú móvil">
+    <ul role="list">
+      <li><a href="/#servicios" class="mnav__link">Servicios</a></li>
+      <li><a href="/#sectores" class="mnav__link">Sectores</a></li>
+      <li><a href="/proyectos/" class="mnav__link">Proyectos</a></li>
+      <li><a href="/#certificaciones" class="mnav__link">Certificaciones</a></li>
+      <li><a href="/#contacto" class="mnav__link mnav__cta">Cotizar</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+.hdr {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--c-header-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(17,24,39,0.08);
+  transition: background var(--t), box-shadow var(--t);
+}
+.hdr.scrolled {
+  background: var(--c-header-scrolled);
+  box-shadow: 0 2px 32px var(--c-header-shadow);
+}
+
+.hdr__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+/* Logo */
+.hdr__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+:global(.hdr__logo-svg) {
+  height: 54px;
+  width: auto;
+  color: var(--c-text);
+  transition: opacity var(--t);
+}
+.hdr__logo:hover :global(.hdr__logo-svg) { opacity: 0.7; }
+
+/* Nav desktop */
+.hdr__nav { display: none; }
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--s-6);
+}
+
+.nav__link {
+  font-size: var(--text-sm);
+  font-weight: var(--w-medium);
+  color: var(--c-text-muted);
+  transition: color var(--t);
+  position: relative;
+  padding-block: var(--s-1);
+}
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1px;
+  background: var(--c-electric);
+  transform: scaleX(0);
+  transition: transform var(--t);
+  transform-origin: left;
+}
+.nav__link:hover,
+.nav__link[aria-current="page"] { color: var(--c-text); }
+.nav__link:hover::after,
+.nav__link[aria-current="page"]::after { transform: scaleX(1); }
+
+.nav__cta {
+  font-size: var(--text-sm) !important;
+  padding: 0.5em 1.2em !important;
+}
+
+/* Burger */
+.hdr__burger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--s-2);
+  border-radius: var(--r-sm);
+}
+.hdr__burger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--c-text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.hdr__burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hdr__burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.hdr__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile nav */
+.mobile-nav {
+  background: rgba(255,255,255,0.98);
+  border-top: 1px solid rgba(17,24,39,0.08);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+.mobile-nav.open { max-height: 360px; }
+
+.mobile-nav ul {
+  padding: var(--s-4) var(--s-4) var(--s-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.mnav__link {
+  display: block;
+  padding: var(--s-3) var(--s-4);
+  font-size: var(--text-base);
+  font-weight: var(--w-medium);
+  color: var(--c-text-muted);
+  border-radius: var(--r-sm);
+  transition: background var(--t), color var(--t);
+}
+.mnav__link:hover { background: var(--c-bg); color: var(--c-text); }
+
+.mnav__cta {
+  margin-top: var(--s-3);
+  background: var(--c-electric);
+  color: var(--c-electric-btn-text) !important;
+  font-weight: var(--w-semi) !important;
+  text-align: center;
+}
+.mnav__cta:hover { filter: brightness(1.15) !important; }
+
+@media (min-width: 768px) {
+  .hdr__nav { display: block; }
+  .hdr__burger { display: none; }
+  .mobile-nav { display: none; }
+}
+</style>
+
+<script>
+const hdr = document.getElementById('hdr');
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobile-nav');
+
+// Scroll → fondo sólido
+window.addEventListener('scroll', () => {
+  hdr?.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// Hamburger
+burger?.addEventListener('click', () => {
+  const open = burger.getAttribute('aria-expanded') === 'true';
+  burger.setAttribute('aria-expanded', String(!open));
+  mobileNav?.setAttribute('aria-hidden', String(open));
+  mobileNav?.classList.toggle('open', !open);
+  burger.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
+});
+
+mobileNav?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    burger?.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    mobileNav.classList.remove('open');
+    burger?.setAttribute('aria-label', 'Abrir menú');
+  });
+});
+</script>

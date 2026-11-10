@@ -1,0 +1,51 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+<!--
+  Logo ELECDIS horizontal — SVG inline fiel al PNG horizontal 4K.
+  Frame de trazos de circuito: círculo TL + vertical + giro inf izq
+  y diagonal + vertical + horizontal inferior + círculo BR.
+  currentColor → hereda color del padre, sin fondos grises.
+-->
+<svg
+  class={`logo-svg ${className}`}
+  viewBox="0 0 420 240"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="ELECDIS"
+  role="img"
+>
+  <!-- Terminal superior izquierdo -->
+  <circle cx="16" cy="13" r="5.5" stroke="currentColor" stroke-width="2.2"/>
+
+  <!-- Trazo izquierdo: stub ↓ → vertical ↓ → pequeño giro → -->
+  <path
+    d="M 16 18.5 L 16 196 L 30 196"
+    stroke="currentColor" stroke-width="2.2"
+    stroke-linecap="round" stroke-linejoin="round"
+  />
+
+  <!-- Trazo derecho: diagonal superior → vertical ↓ → horizontal ← → stub ↓ -->
+  <path
+    d="M 254 8 L 391 65 L 391 212 L 107 212 L 107 220"
+    stroke="currentColor" stroke-width="2.2"
+    stroke-linecap="round" stroke-linejoin="round"
+  />
+
+  <!-- Terminal inferior (en extremo izquierdo del horizontal inferior) -->
+  <circle cx="107" cy="226" r="5.5" stroke="currentColor" stroke-width="2.2"/>
+
+  <!-- Texto ELECDIS -->
+  <text
+    x="212" y="148"
+    text-anchor="middle"
+    font-family="'Space Grotesk', 'Inter', Arial, sans-serif"
+    font-size="62"
+    font-weight="400"
+    fill="currentColor"
+    letter-spacing="12"
+  >ELECDIS</text>
+</svg>

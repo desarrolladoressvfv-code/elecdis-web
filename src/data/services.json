@@ -1,0 +1,35 @@
+[
+  {
+    "id": "tableros",
+    "title": "Tableros",
+    "icon": "⚡",
+    "description": "Diseño, fabricación e instalación de tableros eléctricos de baja y media tensión. Fabricación a medida según requerimientos del proyecto y normativa vigente.",
+    "features": [
+      "Tableros de distribución",
+      "Tableros de control",
+      "Certificación SEC incluida"
+    ]
+  },
+  {
+    "id": "proyectos",
+    "title": "Proyectos Eléctricos",
+    "icon": "📐",
+    "description": "Desarrollo integral de proyectos eléctricos desde el diseño hasta la puesta en marcha. Especialistas en norma RIC-02 y certificación TE-1 ante la SEC.",
+    "features": [
+      "Proyectos residenciales",
+      "Proyectos industriales",
+      "Certificación TE-1 SEC"
+    ]
+  },
+  {
+    "id": "camaras-cctv",
+    "title": "Cámaras CCTV",
+    "icon": "📷",
+    "description": "Instalación de sistemas de videovigilancia profesionales para hogares y empresas. Soluciones analógicas e IP adaptadas a cada necesidad de seguridad.",
+    "features": [
+      "Sistemas analógicos e IP",
+      "Monitoreo remoto",
+      "Instalación y configuración"
+    ]
+  }
+]

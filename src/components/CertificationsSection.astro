@@ -1,0 +1,100 @@
+---
+import certifications from '../data/certifications.json';
+---
+<section class="section certs-sec" id="certificaciones" aria-labelledby="cert-title">
+  <div class="container">
+    <div class="sh sh--center" data-anim>
+      <p class="sh__eyebrow">Respaldo y confianza</p>
+      <h2 class="sh__title" id="cert-title">Certificaciones</h2>
+      <p class="sh__sub">
+        Certificaciones que respaldan nuestra calidad, habilitación técnica y cumplimiento normativo.
+      </p>
+    </div>
+
+    <ul class="certs-grid" role="list">
+      {certifications.map((c, i) => (
+        <li class="cert-card" data-anim data-anim-delay={String(i + 1)}>
+          <div class="cert-card__img-wrap">
+            <div class="img-ph cert-card__img" aria-label={c.imageAlt}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+              <span style="font-size:0.65rem">{c.imageAlt}</span>
+            </div>
+          </div>
+          <div class="cert-card__body">
+            <h3 class="cert-card__title">{c.title}</h3>
+            <dl class="cert-card__meta">
+              <div><dt>Entidad</dt><dd>{c.entity}</dd></div>
+              <div><dt>N°</dt><dd>{c.number}</dd></div>
+              <div><dt>Vigencia</dt><dd>{c.validity}</dd></div>
+            </dl>
+            <span class="chip chip--amber" style="font-size:10px;opacity:0.7;font-style:italic;" aria-hidden="true">📌 Placeholder</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.certs-sec { background: var(--c-bg); }
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+}
+
+.cert-card {
+  background: var(--c-bg-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: border-color var(--t), transform var(--t-slow);
+}
+.cert-card:hover {
+  border-color: rgba(255,184,0,0.25);
+  transform: translateY(-4px);
+}
+
+.cert-card__img {
+  height: 140px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px dashed var(--c-border);
+  min-height: 140px;
+}
+
+.cert-card__body { padding: var(--s-5); }
+
+.cert-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--w-bold);
+  color: var(--c-text);
+  margin-bottom: var(--s-4);
+}
+
+.cert-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin-bottom: var(--s-4);
+}
+.cert-card__meta div { display: flex; gap: var(--s-2); align-items: baseline; }
+.cert-card__meta dt {
+  font-size: var(--text-xs);
+  color: var(--c-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  min-width: 56px;
+  flex-shrink: 0;
+}
+.cert-card__meta dd {
+  font-size: var(--text-sm);
+  color: var(--c-text-muted);
+  font-weight: var(--w-medium);
+}
+
+@media (min-width: 640px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .certs-grid { grid-template-columns: repeat(4, 1fr); } }
+</style>
