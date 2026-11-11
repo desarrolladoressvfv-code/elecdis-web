@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
   <div class="container footer__inner">
     <div class="footer__brand">
       <a href="/" aria-label="ELECDIS – Inicio" class="footer__logo">
-        <Logo class="footer__logo-svg" />
+        <Logo class="footer__logo-img" invert />
       </a>
       <p class="footer__tagline">{site.slogan}</p>
       <p class="footer__sub">{site.description}</p>
@@ -92,7 +92,7 @@ const year = new Date().getFullYear();
 
 .footer__logo { display: inline-flex; color: #F9FAFB; margin-bottom: var(--s-4); transition: color var(--t); }
 .footer__logo:hover { color: var(--c-electric); }
-:global(.footer__logo-svg) { height: 72px; width: auto; }
+:global(.footer__logo-img) { height: 72px; width: auto; max-width: 420px; }
 
 .footer__tagline {
   font-size: var(--text-sm);

@@ -8,7 +8,7 @@ const { currentPath = '/' } = Astro.props;
 
     <!-- Logo ELECDIS -->
     <a href="/" class="hdr__logo" aria-label="ELECDIS – Inicio">
-      <Logo class="hdr__logo-svg" />
+      <Logo class="hdr__logo-img" />
     </a>
 
     <!-- Nav desktop -->
@@ -77,7 +77,7 @@ const { currentPath = '/' } = Astro.props;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  height: 76px;
 }
 
 /* Logo */
@@ -86,13 +86,12 @@ const { currentPath = '/' } = Astro.props;
   align-items: center;
   flex-shrink: 0;
 }
-:global(.hdr__logo-svg) {
-  height: 54px;
+:global(.hdr__logo-img) {
+  height: 60px;
   width: auto;
-  color: var(--c-text);
   transition: opacity var(--t);
 }
-.hdr__logo:hover :global(.hdr__logo-svg) { opacity: 0.7; }
+.hdr__logo:hover :global(.hdr__logo-img) { opacity: 0.7; }
 
 /* Nav desktop */
 .hdr__nav { display: none; }
