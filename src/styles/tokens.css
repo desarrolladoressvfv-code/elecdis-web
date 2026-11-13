@@ -17,10 +17,10 @@
   --c-border:      rgba(17,24,39,0.10);
   --c-border-2:    rgba(17,24,39,0.16);
 
-  /* Acento eléctrico – azul intenso */
-  --c-electric:     #1D4ED8;
-  --c-electric-dim: #1E40AF;
-  --c-electric-glow: rgba(29,78,216,0.12);
+  /* Acento eléctrico – azul marino oscuro */
+  --c-electric:     #1E3A8A;
+  --c-electric-dim: #1e3480;
+  --c-electric-glow: rgba(30,58,138,0.12);
 
   /* Acento cálido – ámbar */
   --c-amber:       #D97706;
