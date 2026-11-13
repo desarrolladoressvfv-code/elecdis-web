@@ -9,7 +9,7 @@
         "sectorId": "montajes-electricos",
         "summary": "Habilitación eléctrica de edificio institucional de 4 pisos para la PDI en Antofagasta.",
         "description": "Proyecto de habilitación eléctrica para la Policía de Investigaciones de Chile en Antofagasta. Incluye tablero general TG Aux por piso (1°, 2°, 3° y 4°), nuevas instalaciones de enchufes e iluminación en cada nivel.",
-        "cover": "/images/proyectos/pdi-antofagasta/img-01.jpg",
+        "cover": "/images/proyectos/pdi-antofagasta/img-03.jpg",
         "coverAlt": "Tableros eléctricos PDI Antofagasta",
         "imageCount": 22,
         "imageDir": "/images/proyectos/pdi-antofagasta"
@@ -24,7 +24,7 @@
         "sectorId": "montajes-electricos",
         "summary": "Conservación y actualización de instalaciones eléctricas en sede PDI Calama.",
         "description": "Proyecto de conservación eléctrica para la Policía de Investigaciones de Chile en Calama. Contempla renovación de tableros de distribución, nueva iluminación y puntos de enchufes según normativa vigente.",
-        "cover": "/images/proyectos/pdi-calama/img-01.jpg",
+        "cover": "/images/proyectos/pdi-calama/img-07.jpg",
         "coverAlt": "Instalaciones eléctricas PDI Calama",
         "imageCount": 15,
         "imageDir": "/images/proyectos/pdi-calama"
@@ -39,7 +39,7 @@
         "sectorId": "montajes-electricos",
         "summary": "Instalación eléctrica completa para gimnasio en Las Condes.",
         "description": "Proyecto eléctrico para el gimnasio Soul Pilates en Las Condes. Incluye tablero de distribución TDA y nuevas instalaciones eléctricas adaptadas a los requerimientos del recinto deportivo.",
-        "cover": "/images/proyectos/soul-pilates/img-01.jpg",
+        "cover": "/images/proyectos/soul-pilates/img-06.jpg",
         "coverAlt": "Instalación eléctrica Soul Pilates Las Condes",
         "imageCount": 13,
         "imageDir": "/images/proyectos/soul-pilates"
@@ -69,7 +69,7 @@
         "sectorId": "proyectos-ingenieria",
         "summary": "Proyecto eléctrico completo para centro radiológico en San Miguel.",
         "description": "Proyecto eléctrico para centro radiológico en San Miguel. Contempla tableros de distribución TG auxiliar, instalaciones de iluminación y enchufes adaptadas a los requerimientos de un recinto de salud con equipamiento de diagnóstico por imágenes.",
-        "cover": "/images/proyectos/centro-radiologico-tristan-matta/img-01.jpg",
+        "cover": "/images/proyectos/centro-radiologico-tristan-matta/img-04.jpg",
         "coverAlt": "Instalación eléctrica Centro Radiológico Tristán Matta",
         "imageCount": 8,
         "imageDir": "/images/proyectos/centro-radiologico-tristan-matta"
@@ -84,7 +84,7 @@
         "sectorId": "montajes-electricos",
         "summary": "Habilitación eléctrica de oficinas en Vitacura.",
         "description": "Proyecto de habilitación eléctrica para oficinas Danco en Vitacura. Incluye instalación de tableros, iluminación y puntos eléctricos para espacio de trabajo en edificio corporativo.",
-        "cover": "/images/proyectos/candelaria-goyenechea/img-01.jpg",
+        "cover": "/images/proyectos/candelaria-goyenechea/img-07.jpg",
         "coverAlt": "Habilitación eléctrica oficinas Candelaria Goyenechea",
         "imageCount": 8,
         "imageDir": "/images/proyectos/candelaria-goyenechea"
@@ -99,7 +99,7 @@
         "sectorId": "montajes-electricos",
         "summary": "Empalme, tablero de distribución y equipos de climatización.",
         "description": "Proyecto eléctrico para Jardín Belén. Incluye empalme de 27 kW, tablero de distribución TDA y F existente, y conexiones para equipos de aire acondicionado.",
-        "cover": "/images/proyectos/jardin-belen/img-01.jpg",
+        "cover": "/images/proyectos/jardin-belen/img-05.jpg",
         "coverAlt": "Instalación eléctrica Jardín Belén",
         "imageCount": 9,
         "imageDir": "/images/proyectos/jardin-belen"
@@ -174,7 +174,7 @@
         "sectorId": "montajes-electricos",
         "summary": "Habilitación eléctrica de sala de recuperación y pabellón en clínica Chillán.",
         "description": "Segunda etapa del proyecto eléctrico para Clínica Andes Salud Chillán. Incluye tablero de distribución existente para sala de recuperación, iluminación y enchufes en sala de parto y recuperación, con estándares para recintos médicos.",
-        "cover": "/images/proyectos/andes-salud-chillan-sr/img-01.jpg",
+        "cover": "/images/proyectos/andes-salud-chillan-sr/img-02.jpg",
         "coverAlt": "Habilitación eléctrica sala recuperación Andes Salud Chillán",
         "imageCount": 9,
         "imageDir": "/images/proyectos/andes-salud-chillan-sr"
@@ -189,7 +189,7 @@
         "sectorId": "tableros-electricos",
         "summary": "Fabricación e instalación de tableros eléctricos e iluminación para Grupo EXPRO.",
         "description": "Proyecto de tableros eléctricos e iluminación para Grupo EXPRO. Incluye tableros locales LC 101, LC 102 y oficina 102, cada uno con señalética de riesgo eléctrico, cuadro de carga, diagrama unilineal, protecciones y diferenciales certificados.",
-        "cover": "/images/proyectos/expro/img-01.jpg",
+        "cover": "/images/proyectos/expro/img-10.jpg",
         "coverAlt": "Tableros eléctricos Grupo EXPRO",
         "imageCount": 17,
         "imageDir": "/images/proyectos/expro"
