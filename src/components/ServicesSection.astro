@@ -20,12 +20,13 @@ const clientRubros = [
       </p>
     </div>
 
-    <!-- Cards con foto -->
+    <!-- Cards: imagen arriba + contenido abajo -->
     <ul class="srv-grid" role="list">
       {services.map((s, i) => (
         <li class="srv-card" data-anim data-anim-delay={String(i + 1)}>
-          <img src={s.image} alt={s.title} class="srv-card__bg" loading="lazy" decoding="async" />
-          <div class="srv-card__overlay"></div>
+          <div class="srv-card__img-wrap">
+            <img src={s.image} alt={s.title} class="srv-card__img" loading="lazy" decoding="async" />
+          </div>
           <div class="srv-card__body">
             <h3 class="srv-card__title">{s.title}</h3>
             <p class="srv-card__desc">{s.description}</p>
@@ -74,65 +75,61 @@ const clientRubros = [
 .srv-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--s-5);
+  gap: var(--s-6);
   margin-bottom: var(--s-10);
 }
 @media (min-width: 768px) { .srv-grid { grid-template-columns: repeat(3, 1fr); } }
 
 /* Card */
 .srv-card {
-  position: relative;
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  min-height: 420px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   transition: transform var(--t-slow), box-shadow var(--t-slow);
 }
 .srv-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.18);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
 }
 
-.srv-card__bg {
-  position: absolute;
-  inset: 0;
+/* Imagen */
+.srv-card__img-wrap {
+  overflow: hidden;
+  height: 220px;
+  flex-shrink: 0;
+}
+.srv-card__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s ease;
+  display: block;
 }
-.srv-card:hover .srv-card__bg { transform: scale(1.06); }
+.srv-card:hover .srv-card__img { transform: scale(1.05); }
 
-.srv-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(5,10,20,0.95) 0%, rgba(5,10,20,0.55) 50%, rgba(5,10,20,0.1) 100%);
-  transition: background var(--t-slow);
-}
-.srv-card:hover .srv-card__overlay {
-  background: linear-gradient(to top, rgba(5,10,20,0.98) 0%, rgba(5,10,20,0.75) 55%, rgba(5,10,20,0.2) 100%);
-}
-
+/* Cuerpo */
 .srv-card__body {
-  position: relative;
-  padding: var(--s-7);
+  padding: var(--s-6) var(--s-7) var(--s-7);
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .srv-card__title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   font-weight: var(--w-bold);
-  color: #fff;
+  color: var(--c-text);
   margin-bottom: var(--s-3);
 }
 
 .srv-card__desc {
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.7);
+  color: var(--c-text-muted);
   line-height: var(--lead-normal);
   margin-bottom: var(--s-5);
 }
@@ -142,13 +139,14 @@ const clientRubros = [
   flex-direction: column;
   gap: var(--s-2);
   margin-bottom: var(--s-6);
+  flex: 1;
 }
 .srv-feat {
   display: flex;
   align-items: center;
   gap: var(--s-2);
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.65);
+  color: var(--c-text-muted);
 }
 .srv-feat svg { color: var(--c-electric); flex-shrink: 0; }
 
@@ -158,14 +156,18 @@ const clientRubros = [
   gap: var(--s-2);
   font-size: var(--text-sm);
   font-weight: var(--w-semi);
-  color: #fff;
-  background: var(--c-electric);
+  color: var(--c-electric);
+  border: 1.5px solid var(--c-electric);
   padding: 0.55em 1.2em;
   border-radius: 999px;
   align-self: flex-start;
-  transition: background var(--t), gap var(--t);
+  transition: background var(--t), color var(--t), gap var(--t);
 }
-.srv-card__cta:hover { background: var(--c-electric-dim); gap: var(--s-3); }
+.srv-card__cta:hover {
+  background: var(--c-electric);
+  color: #fff;
+  gap: var(--s-3);
+}
 
 /* Franja rubros */
 .rubros {
