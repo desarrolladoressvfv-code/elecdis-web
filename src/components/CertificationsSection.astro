@@ -100,16 +100,6 @@ const brandMeta: Record<string, { color: string; logo: string }> = {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><polyline points="15 3 21 3 21 9"/><line x1="21" y1="3" x2="14" y2="10"/></svg>
                   Ver certificado
                 </button>
-                <a
-                  href={c.verifyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="cert-btn cert-btn--link"
-                  aria-label={`Verificar en ${c.verifyLabel} (abre en nueva pestaña)`}
-                >
-                  Verificar
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                </a>
               </div>
             </div>
           </li>
@@ -271,17 +261,6 @@ const brandMeta: Record<string, { color: string; logo: string }> = {
   color: var(--c-electric);
   background: color-mix(in srgb, var(--c-electric) 6%, transparent);
 }
-.cert-btn--link {
-  color: var(--c-electric);
-  background: color-mix(in srgb, var(--c-electric) 8%, transparent);
-  border: 1.5px solid color-mix(in srgb, var(--c-electric) 20%, transparent);
-}
-.cert-btn--link:hover {
-  background: var(--c-electric);
-  color: #fff;
-  border-color: var(--c-electric);
-}
-
 /* Lightbox */
 .cert-lightbox {
   position: fixed;
