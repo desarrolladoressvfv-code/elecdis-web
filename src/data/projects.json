@@ -191,7 +191,7 @@
     "description": "Proyecto de tableros eléctricos e iluminación para Grupo EXPRO. Incluye tableros locales LC 101, LC 102 y oficina 102, cada uno con señalética de riesgo eléctrico, cuadro de carga, diagrama unilineal, protecciones y diferenciales certificados.",
     "cover": "/images/proyectos/expro/img-01.jpg",
     "coverAlt": "Tableros eléctricos Grupo EXPRO",
-    "imageCount": 35,
+    "imageCount": 34,
     "imageDir": "/images/proyectos/expro"
   }
 ]

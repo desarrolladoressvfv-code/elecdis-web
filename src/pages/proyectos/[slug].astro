@@ -121,7 +121,10 @@ const images = Array.from({ length: project.imageCount }, (_, i) => {
           </div>
 
           <div class="project-info__ctas">
-            <a href="/#contacto" class="btn btn--primary">Cotizar un proyecto similar</a>
+            <a href="/#contacto" class="btn btn--electric proj-cta">
+              Cotizar un proyecto similar
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
         </aside>
       </div>
@@ -316,8 +319,13 @@ const images = Array.from({ length: project.imageCount }, (_, i) => {
   gap: var(--s-5);
   margin-bottom: var(--s-6);
   border: 1px solid var(--c-border);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
+.project-info__item {
+  border-left: 2px solid var(--c-electric);
+  padding-left: var(--s-3);
+}
 .project-info__item dt {
   font-size: var(--text-xs);
   color: var(--c-text-faint);
@@ -333,6 +341,10 @@ const images = Array.from({ length: project.imageCount }, (_, i) => {
 
 .project-info__desc {
   margin-bottom: var(--s-6);
+  padding: var(--s-5);
+  background: var(--c-bg-2);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--c-border);
 }
 .project-info__desc-title {
   font-family: var(--font-display);
@@ -346,6 +358,18 @@ const images = Array.from({ length: project.imageCount }, (_, i) => {
   color: var(--c-text-muted);
   line-height: var(--lead-normal);
 }
+
+/* CTA button */
+.proj-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  width: 100%;
+  justify-content: center;
+  font-size: var(--text-base);
+  padding: 0.85em 1.5em;
+}
+.proj-cta svg { flex-shrink: 0; }
 
 /* Project nav */
 .project-nav {
