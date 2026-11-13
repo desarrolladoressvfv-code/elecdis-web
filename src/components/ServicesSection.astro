@@ -4,7 +4,7 @@ import services from '../data/services.json';
 <section class="section services" id="servicios" aria-labelledby="srv-title">
   <div class="container">
 
-    <div class="sh" data-anim>
+    <div class="sh sh--center" data-anim>
       <p class="sh__eyebrow">Lo que hacemos</p>
       <h2 class="sh__title" id="srv-title">Nuestros Servicios</h2>
       <p class="sh__sub">
@@ -15,24 +15,36 @@ import services from '../data/services.json';
     <ul class="srv-grid" role="list">
       {services.map((s, i) => (
         <li class="srv-card" data-anim data-anim-delay={String(i + 1)}>
-          <div class="srv-card__number" aria-hidden="true">0{i + 1}</div>
-          <div class="srv-card__icon" aria-hidden="true">{s.icon}</div>
-          <h3 class="srv-card__title">{s.title}</h3>
-          <p class="srv-card__desc">{s.description}</p>
-          <ul class="srv-card__features" role="list">
-            {s.features.map(f => (
-              <li class="srv-feat">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="9,12 11,14 15,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                {f}
-              </li>
-            ))}
-          </ul>
-          <a href="/#contacto" class="srv-card__link" aria-label={`Cotizar ${s.title}`}>
-            Cotizar
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <!-- Borde eléctrico en hover -->
-          <div class="srv-card__border" aria-hidden="true"></div>
+          <img
+            src={s.image}
+            alt={s.title}
+            class="srv-card__bg"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="srv-card__overlay"></div>
+
+          <div class="srv-card__body">
+            <h3 class="srv-card__title">{s.title}</h3>
+            <p class="srv-card__desc">{s.description}</p>
+
+            <ul class="srv-card__features" role="list">
+              {s.features.map(f => (
+                <li class="srv-feat">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <polyline points="9,12 11,14 15,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <a href="/#contacto" class="srv-card__cta" aria-label={`Cotizar ${s.title}`}>
+              Cotizar
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
         </li>
       ))}
     </ul>
@@ -40,7 +52,11 @@ import services from '../data/services.json';
 </section>
 
 <style>
-.services { background: var(--c-bg-2); }
+.services { background: var(--c-dark); }
+
+.services .sh__eyebrow { color: var(--c-electric); }
+.services .sh__title  { color: #fff; }
+.services .sh__sub    { color: rgba(255,255,255,0.6); }
 
 .srv-grid {
   display: grid;
@@ -50,61 +66,71 @@ import services from '../data/services.json';
 
 .srv-card {
   position: relative;
-  background: var(--c-bg-3);
-  border: 1px solid var(--c-border);
   border-radius: var(--r-lg);
-  padding: var(--s-8);
+  overflow: hidden;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  transition: border-color var(--t), transform var(--t-slow), box-shadow var(--t-slow);
+  justify-content: flex-end;
+  transition: transform var(--t-slow), box-shadow var(--t-slow);
 }
 .srv-card:hover {
-  border-color: rgba(0,194,255,0.3);
   transform: translateY(-6px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(14,165,233,0.08) inset;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.5);
 }
 
-.srv-card__number {
+.srv-card__bg {
   position: absolute;
-  top: var(--s-5);
-  right: var(--s-6);
-  font-family: var(--font-display);
-  font-size: 3.5rem;
-  font-weight: var(--w-black);
-  color: rgba(255,255,255,0.03);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  user-select: none;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.srv-card:hover .srv-card__bg { transform: scale(1.06); }
+
+.srv-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5,10,20,0.95) 0%,
+    rgba(5,10,20,0.6) 50%,
+    rgba(5,10,20,0.15) 100%
+  );
+  transition: background var(--t-slow);
+}
+.srv-card:hover .srv-card__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(5,10,20,0.98) 0%,
+    rgba(5,10,20,0.75) 55%,
+    rgba(5,10,20,0.25) 100%
+  );
 }
 
-.srv-card__icon {
-  font-size: 2rem;
-  margin-bottom: var(--s-5);
-  width: 52px;
-  height: 52px;
-  background: var(--c-electric-glow);
-  border: 1px solid rgba(0,194,255,0.2);
-  border-radius: var(--r-md);
+.srv-card__body {
+  position: relative;
+  padding: var(--s-7) var(--s-7) var(--s-7);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .srv-card__title {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
   font-weight: var(--w-bold);
-  color: var(--c-text);
+  color: #fff;
   margin-bottom: var(--s-3);
+  line-height: 1.2;
 }
 
 .srv-card__desc {
   font-size: var(--text-sm);
-  color: var(--c-text-muted);
+  color: rgba(255,255,255,0.7);
   line-height: var(--lead-normal);
   margin-bottom: var(--s-5);
-  flex: 1;
+  max-width: 340px;
 }
 
 .srv-card__features {
@@ -119,33 +145,27 @@ import services from '../data/services.json';
   align-items: center;
   gap: var(--s-2);
   font-size: var(--text-sm);
-  color: var(--c-text-muted);
+  color: rgba(255,255,255,0.65);
 }
 .srv-feat svg { color: var(--c-electric); flex-shrink: 0; }
 
-.srv-card__link {
+.srv-card__cta {
   display: inline-flex;
   align-items: center;
   gap: var(--s-2);
   font-size: var(--text-sm);
   font-weight: var(--w-semi);
-  color: var(--c-electric);
-  transition: gap var(--t);
-  margin-top: auto;
+  color: #fff;
+  background: var(--c-electric);
+  padding: 0.55em 1.2em;
+  border-radius: 999px;
+  align-self: flex-start;
+  transition: background var(--t), gap var(--t);
 }
-.srv-card__link:hover { gap: var(--s-3); }
-
-/* Borde animado */
-.srv-card__border {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--c-electric), var(--c-amber), transparent);
-  opacity: 0;
-  transition: opacity var(--t-slow);
+.srv-card__cta:hover {
+  background: var(--c-electric-dim);
+  gap: var(--s-3);
 }
-.srv-card:hover .srv-card__border { opacity: 1; }
 
-@media (min-width: 640px) { .srv-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .srv-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 768px)  { .srv-grid { grid-template-columns: repeat(3, 1fr); } }
 </style>
