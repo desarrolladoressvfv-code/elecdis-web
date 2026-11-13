@@ -15,11 +15,15 @@ const currentIndex = allProjects.findIndex(p => p.slug === project.slug);
 const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
 const nextProject = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
-// Build images array from imageDir + imageCount
-const images = Array.from({ length: project.imageCount }, (_, i) => {
+// Build images array: cover first, then the rest in sequential order (skipping cover)
+const allImages = Array.from({ length: project.imageCount }, (_, i) => {
   const n = String(i + 1).padStart(2, '0');
   return { src: `${project.imageDir}/img-${n}.jpg`, alt: `${project.title} – imagen ${i + 1}` };
 });
+const images = [
+  { src: project.cover, alt: `${project.title} – portada` },
+  ...allImages.filter(img => img.src !== project.cover),
+];
 ---
 <BaseLayout
   title={`${project.title} | Proyectos | ELECDIS`}
