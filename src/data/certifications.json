@@ -1,34 +1,58 @@
 [
   {
-    "id": "cert-1",
-    "title": "Certificación 1",
-    "entity": "[Por definir]",
-    "number": "[Por definir]",
-    "validity": "[Por definir]",
-    "imageAlt": "Imagen del certificado 1"
+    "id": "legrand-tableristas",
+    "brand": "Legrand Bticino",
+    "brandSlug": "legrand",
+    "title": "Certificado Tableristas",
+    "subtitle": "Integrador TAN – Legrand Academy Chile",
+    "norm": "IEC 61439-1 y -2",
+    "number": "2026-11",
+    "validity": "Jul 2026 – Jul 2028",
+    "certImage": "/images/certificaciones/legrand-tableristas.png",
+    "certImageAlt": "Certificado Tableristas Legrand Bticino – Elecdis SpA N° 2026-11",
+    "verifyUrl": "https://www.legrand.cl",
+    "verifyLabel": "legrand.cl"
   },
   {
-    "id": "cert-2",
-    "title": "Certificación 2",
-    "entity": "[Por definir]",
-    "number": "[Por definir]",
-    "validity": "[Por definir]",
-    "imageAlt": "Imagen del certificado 2"
+    "id": "legrand-integrador",
+    "brand": "Legrand",
+    "brandSlug": "legrand",
+    "title": "Integrador Certificado de Tableros",
+    "subtitle": "Legrand Academy Chile",
+    "norm": "IEC 61439-1 y 2",
+    "number": "—",
+    "validity": "Vigente",
+    "certImage": "/images/certificaciones/legrand-integrador.png",
+    "certImageAlt": "Placa Integrador Certificado de Tableros Legrand – Elecdis SpA",
+    "verifyUrl": "https://www.legrand.cl",
+    "verifyLabel": "legrand.cl"
   },
   {
-    "id": "cert-3",
-    "title": "Certificación 3",
-    "entity": "[Por definir]",
-    "number": "[Por definir]",
-    "validity": "[Por definir]",
-    "imageAlt": "Imagen del certificado 3"
+    "id": "rittal-power-engineering",
+    "brand": "Rittal",
+    "brandSlug": "rittal",
+    "title": "Power Engineering",
+    "subtitle": "Ri4Power y RiLine60",
+    "norm": "IEC 61439-1/2",
+    "number": "—",
+    "validity": "Oct 2026 – Oct 2028",
+    "certImage": "/images/certificaciones/rittal-power-engineering.png",
+    "certImageAlt": "Certificación Rittal Power Engineering Ri4Power y RiLine60 – Elecdis SpA",
+    "verifyUrl": "https://www.rittal.com/cl-es/",
+    "verifyLabel": "rittal.com"
   },
   {
-    "id": "cert-4",
-    "title": "Certificación 4",
-    "entity": "[Por definir]",
-    "number": "[Por definir]",
-    "validity": "[Por definir]",
-    "imageAlt": "Imagen del certificado 4"
+    "id": "phoenix-contact-partner",
+    "brand": "Phoenix Contact",
+    "brandSlug": "phoenix-contact",
+    "title": "Qualified Partner Program",
+    "subtitle": "Panel Builder",
+    "norm": "—",
+    "number": "—",
+    "validity": "Vigente",
+    "certImage": "/images/certificaciones/phoenix-contact-partner.png",
+    "certImageAlt": "Phoenix Contact Qualified Partner Program Panel Builder – Elecdis SpA",
+    "verifyUrl": "https://www.phoenixcontact.com/es-cl/empresa/partners/panel-builders/",
+    "verifyLabel": "phoenixcontact.com"
   }
 ]

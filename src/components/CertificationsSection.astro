@@ -1,100 +1,392 @@
 ---
 import certifications from '../data/certifications.json';
+
+const brandMeta: Record<string, { color: string; logo: string }> = {
+  legrand: {
+    color: '#E2001A',
+    logo: `<svg viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="36" height="36" rx="4" fill="#E2001A"/>
+      <text x="18" y="25" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">L</text>
+      <text x="52" y="25" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#E2001A" text-anchor="middle">legrand</text>
+    </svg>`,
+  },
+  rittal: {
+    color: '#E30613',
+    logo: `<svg viewBox="0 0 110 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="0"  y="0"  width="10" height="10" fill="#E30613"/>
+      <rect x="13" y="0"  width="10" height="10" fill="#009FE3"/>
+      <rect x="0"  y="13" width="10" height="10" fill="#009FE3"/>
+      <rect x="13" y="13" width="10" height="10" fill="#E30613"/>
+      <rect x="0"  y="26" width="10" height="10" fill="#78BE20"/>
+      <rect x="13" y="26" width="10" height="10" fill="#FAB900"/>
+      <text x="34" y="25" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="#1A1A1A" text-anchor="start">RITTAL</text>
+    </svg>`,
+  },
+  'phoenix-contact': {
+    color: '#009FE3',
+    logo: `<svg viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="36" height="36" rx="2" fill="#1A1A1A"/>
+      <rect x="6"  y="6"  width="10" height="10" fill="white"/>
+      <rect x="20" y="6"  width="10" height="10" fill="white"/>
+      <rect x="6"  y="20" width="10" height="10" fill="white"/>
+      <rect x="20" y="20" width="10" height="10" fill="white"/>
+      <text x="45" y="15" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#1A1A1A" text-anchor="start">PHOENIX</text>
+      <text x="45" y="29" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#1A1A1A" text-anchor="start">CONTACT</text>
+    </svg>`,
+  },
+};
 ---
+
 <section class="section certs-sec" id="certificaciones" aria-labelledby="cert-title">
   <div class="container">
+
     <div class="sh sh--center" data-anim>
       <p class="sh__eyebrow">Respaldo y confianza</p>
       <h2 class="sh__title" id="cert-title">Certificaciones</h2>
       <p class="sh__sub">
-        Certificaciones que respaldan nuestra calidad, habilitación técnica y cumplimiento normativo.
+        Certificaciones de fabricantes líderes que validan nuestra competencia técnica y cumplimiento normativo.
       </p>
     </div>
 
     <ul class="certs-grid" role="list">
-      {certifications.map((c, i) => (
-        <li class="cert-card" data-anim data-anim-delay={String(i + 1)}>
-          <div class="cert-card__img-wrap">
-            <div class="img-ph cert-card__img" aria-label={c.imageAlt}>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-              <span style="font-size:0.65rem">{c.imageAlt}</span>
+      {certifications.map((c, i) => {
+        const meta = brandMeta[c.brandSlug] ?? { color: '#1E3A8A', logo: '' };
+        return (
+          <li class="cert-card" data-anim data-anim-delay={String(i + 1)}>
+            <!-- Logo area -->
+            <div class="cert-card__logo-wrap" style={`--brand-color: ${meta.color}`}>
+              <div class="cert-card__logo" set:html={meta.logo} />
             </div>
-          </div>
-          <div class="cert-card__body">
-            <h3 class="cert-card__title">{c.title}</h3>
-            <dl class="cert-card__meta">
-              <div><dt>Entidad</dt><dd>{c.entity}</dd></div>
-              <div><dt>N°</dt><dd>{c.number}</dd></div>
-              <div><dt>Vigencia</dt><dd>{c.validity}</dd></div>
-            </dl>
-            <span class="chip chip--amber" style="font-size:10px;opacity:0.7;font-style:italic;" aria-hidden="true">📌 Placeholder</span>
-          </div>
-        </li>
-      ))}
+
+            <!-- Body -->
+            <div class="cert-card__body">
+              <div class="cert-card__titles">
+                <h3 class="cert-card__title">{c.title}</h3>
+                <p class="cert-card__subtitle">{c.subtitle}</p>
+              </div>
+
+              <dl class="cert-card__meta">
+                {c.norm !== '—' && (
+                  <div class="cert-card__meta-row">
+                    <dt>Norma</dt>
+                    <dd>{c.norm}</dd>
+                  </div>
+                )}
+                {c.number !== '—' && (
+                  <div class="cert-card__meta-row">
+                    <dt>N°</dt>
+                    <dd>{c.number}</dd>
+                  </div>
+                )}
+                <div class="cert-card__meta-row">
+                  <dt>Vigencia</dt>
+                  <dd>
+                    <span class="cert-badge" style={`--brand-color: ${meta.color}`}>
+                      <span class="cert-badge__dot" aria-hidden="true"></span>
+                      {c.validity}
+                    </span>
+                  </dd>
+                </div>
+              </dl>
+
+              <!-- CTAs -->
+              <div class="cert-card__ctas">
+                <button
+                  class="cert-btn cert-btn--outline"
+                  data-cert-trigger={c.certImage}
+                  data-cert-alt={c.certImageAlt}
+                  aria-label={`Ver certificado: ${c.title}`}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><polyline points="15 3 21 3 21 9"/><line x1="21" y1="3" x2="14" y2="10"/></svg>
+                  Ver certificado
+                </button>
+                <a
+                  href={c.verifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-btn cert-btn--link"
+                  aria-label={`Verificar en ${c.verifyLabel} (abre en nueva pestaña)`}
+                >
+                  Verificar
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+        );
+      })}
     </ul>
+
+    <!-- Nota verificación Legrand -->
+    <p class="certs-note" data-anim>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Para validar certificados Legrand escribe a
+      <a href="mailto:legrandacademychile@legrand.cl">legrandacademychile@legrand.cl</a>
+      indicando el número de certificado.
+    </p>
+
   </div>
 </section>
+
+<!-- Lightbox certificado -->
+<div class="cert-lightbox" id="cert-lightbox" role="dialog" aria-modal="true" aria-label="Certificado ampliado" hidden>
+  <div class="cert-lightbox__backdrop" id="cert-lightbox-backdrop"></div>
+  <div class="cert-lightbox__content">
+    <button class="cert-lightbox__close" id="cert-lightbox-close" aria-label="Cerrar">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img id="cert-lightbox-img" src="" alt="" class="cert-lightbox__img" />
+  </div>
+</div>
 
 <style>
 .certs-sec { background: var(--c-bg); }
 
+/* Grid */
 .certs-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--s-5);
+  margin-bottom: var(--s-6);
 }
+@media (min-width: 640px)  { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .certs-grid { grid-template-columns: repeat(4, 1fr); } }
 
+/* Card */
 .cert-card {
+  display: flex;
+  flex-direction: column;
   background: var(--c-bg-2);
   border: 1px solid var(--c-border);
   border-radius: var(--r-lg);
   overflow: hidden;
-  transition: border-color var(--t), transform var(--t-slow);
+  transition: transform var(--t-slow), box-shadow var(--t-slow), border-color var(--t);
 }
 .cert-card:hover {
-  border-color: rgba(255,184,0,0.25);
   transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+  border-color: color-mix(in srgb, var(--c-electric) 30%, transparent);
 }
 
-.cert-card__img {
-  height: 140px;
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px dashed var(--c-border);
-  min-height: 140px;
+/* Logo area */
+.cert-card__logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-7) var(--s-6) var(--s-6);
+  background: var(--c-bg);
+  border-bottom: 1px solid var(--c-border);
+  min-height: 90px;
 }
+.cert-card__logo {
+  width: 100%;
+  max-width: 140px;
+}
+.cert-card__logo svg { width: 100%; height: auto; display: block; }
 
-.cert-card__body { padding: var(--s-5); }
+/* Body */
+.cert-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--s-5);
+  gap: var(--s-4);
+}
 
 .cert-card__title {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: var(--w-bold);
   color: var(--c-text);
-  margin-bottom: var(--s-4);
+  line-height: 1.3;
+}
+.cert-card__subtitle {
+  font-size: var(--text-xs);
+  color: var(--c-text-faint);
+  margin-top: var(--s-1);
 }
 
+/* Meta */
 .cert-card__meta {
   display: flex;
   flex-direction: column;
   gap: var(--s-2);
-  margin-bottom: var(--s-4);
+  flex: 1;
 }
-.cert-card__meta div { display: flex; gap: var(--s-2); align-items: baseline; }
-.cert-card__meta dt {
-  font-size: var(--text-xs);
+.cert-card__meta-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+}
+.cert-card__meta-row dt {
+  font-size: 10px;
+  font-weight: var(--w-semi);
   color: var(--c-text-faint);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  min-width: 56px;
+  min-width: 48px;
   flex-shrink: 0;
 }
-.cert-card__meta dd {
-  font-size: var(--text-sm);
+.cert-card__meta-row dd {
+  font-size: var(--text-xs);
   color: var(--c-text-muted);
   font-weight: var(--w-medium);
 }
 
-@media (min-width: 640px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .certs-grid { grid-template-columns: repeat(4, 1fr); } }
+/* Badge vigencia */
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: var(--w-semi);
+  color: var(--c-text-muted);
+}
+.cert-badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--brand-color, #22c55e) 80%, transparent);
+  flex-shrink: 0;
+}
+
+/* CTAs */
+.cert-card__ctas {
+  display: flex;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+}
+
+.cert-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  font-size: 11px;
+  font-weight: var(--w-semi);
+  border-radius: 999px;
+  padding: 0.4em 0.9em;
+  transition: background var(--t), color var(--t), border-color var(--t);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.cert-btn--outline {
+  border: 1.5px solid var(--c-border-2);
+  color: var(--c-text-muted);
+  background: transparent;
+}
+.cert-btn--outline:hover {
+  border-color: var(--c-electric);
+  color: var(--c-electric);
+  background: color-mix(in srgb, var(--c-electric) 6%, transparent);
+}
+.cert-btn--link {
+  color: var(--c-electric);
+  background: color-mix(in srgb, var(--c-electric) 8%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--c-electric) 20%, transparent);
+}
+.cert-btn--link:hover {
+  background: var(--c-electric);
+  color: #fff;
+  border-color: var(--c-electric);
+}
+
+/* Nota */
+.certs-note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-2);
+  font-size: var(--text-xs);
+  color: var(--c-text-faint);
+  background: var(--c-bg-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--s-3) var(--s-4);
+  line-height: 1.5;
+}
+.certs-note svg { flex-shrink: 0; margin-top: 1px; }
+.certs-note a { color: var(--c-electric); }
+.certs-note a:hover { text-decoration: underline; }
+
+/* Lightbox */
+.cert-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-5);
+}
+.cert-lightbox[hidden] { display: none; }
+
+.cert-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(4px);
+}
+
+.cert-lightbox__content {
+  position: relative;
+  max-width: 560px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-lightbox__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  color: rgba(255,255,255,0.75);
+  padding: var(--s-2);
+  border-radius: var(--r-sm);
+  transition: color var(--t), background var(--t);
+}
+.cert-lightbox__close:hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+.cert-lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--r-lg);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+}
 </style>
+
+<script>
+const lightbox = document.getElementById('cert-lightbox');
+const lbImg = document.getElementById('cert-lightbox-img') as HTMLImageElement | null;
+const lbClose = document.getElementById('cert-lightbox-close');
+const lbBackdrop = document.getElementById('cert-lightbox-backdrop');
+
+function openLightbox(src: string, alt: string) {
+  if (!lightbox || !lbImg) return;
+  lbImg.src = src;
+  lbImg.alt = alt;
+  lightbox.hidden = false;
+  document.body.style.overflow = 'hidden';
+  lbClose?.focus();
+}
+function closeLightbox() {
+  if (!lightbox) return;
+  lightbox.hidden = true;
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-cert-trigger]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const src = (btn as HTMLElement).dataset.certTrigger ?? '';
+    const alt = (btn as HTMLElement).dataset.certAlt ?? '';
+    openLightbox(src, alt);
+  });
+});
+
+lbClose?.addEventListener('click', closeLightbox);
+lbBackdrop?.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !lightbox?.hidden) closeLightbox();
+});
+</script>
