@@ -1,17 +1,17 @@
 [
   {
-    "id": "sector-1",
-    "title": "Sector 1",
-    "description": "Descripción del sector: tipos de proyectos atendidos, escala, requerimientos técnicos específicos y valor agregado que aporta ELECDIS en este rubro."
+    "id": "tableros-electricos",
+    "title": "Tableros eléctricos",
+    "description": "Diseñamos, fabricamos y montamos tableros de distribución, fuerza y control para proyectos industriales, comerciales y residenciales. Trabajamos según la normativa SEC vigente, con componentes certificados y pruebas antes de la entrega."
   },
   {
-    "id": "sector-2",
-    "title": "Sector 2",
-    "description": "Descripción del sector: tipos de proyectos atendidos, escala, requerimientos técnicos específicos y valor agregado que aporta ELECDIS en este rubro."
+    "id": "montajes-electricos",
+    "title": "Montajes eléctricos",
+    "description": "Ejecutamos instalaciones eléctricas en baja y media tensión, desde canalizaciones y cableado hasta iluminación y puesta en servicio. Contamos con personal calificado y supervisión en terreno para cumplir plazos y estándares de seguridad."
   },
   {
-    "id": "sector-3",
-    "title": "Sector 3",
-    "description": "Descripción del sector: tipos de proyectos atendidos, escala, requerimientos técnicos específicos y valor agregado que aporta ELECDIS en este rubro."
+    "id": "proyectos-ingenieria",
+    "title": "Proyectos e ingeniería de detalle",
+    "description": "Desarrollamos proyectos eléctricos completos: cálculos, planos, memorias y especificaciones técnicas listas para construir. Además, gestionamos la declaración ante la SEC (TE1) para que su proyecto avance sin contratiempos."
   }
 ]
