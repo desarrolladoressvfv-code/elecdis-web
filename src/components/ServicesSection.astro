@@ -4,7 +4,7 @@ import services from '../data/services.json';
 <section class="section services" id="servicios" aria-labelledby="srv-title">
   <div class="container">
 
-    <div class="sh sh--center" data-anim>
+    <div class="sh" data-anim>
       <p class="sh__eyebrow">Lo que hacemos</p>
       <h2 class="sh__title" id="srv-title">Nuestros Servicios</h2>
       <p class="sh__sub">
@@ -12,23 +12,26 @@ import services from '../data/services.json';
       </p>
     </div>
 
-    <ul class="srv-grid" role="list">
+    <ul class="srv-list" role="list">
       {services.map((s, i) => (
-        <li class="srv-card" data-anim data-anim-delay={String(i + 1)}>
-          <img
-            src={s.image}
-            alt={s.title}
-            class="srv-card__bg"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="srv-card__overlay"></div>
+        <li class={`srv-row${i % 2 === 1 ? ' srv-row--reverse' : ''}`} data-anim data-anim-delay={String(i + 1)}>
 
-          <div class="srv-card__body">
-            <h3 class="srv-card__title">{s.title}</h3>
-            <p class="srv-card__desc">{s.description}</p>
+          <div class="srv-row__img-wrap">
+            <img
+              src={s.image}
+              alt={s.title}
+              class="srv-row__img"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="srv-row__num" aria-hidden="true">0{i + 1}</div>
+          </div>
 
-            <ul class="srv-card__features" role="list">
+          <div class="srv-row__body">
+            <h3 class="srv-row__title">{s.title}</h3>
+            <p class="srv-row__desc">{s.description}</p>
+
+            <ul class="srv-row__features" role="list">
               {s.features.map(f => (
                 <li class="srv-feat">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -40,11 +43,12 @@ import services from '../data/services.json';
               ))}
             </ul>
 
-            <a href="/#contacto" class="srv-card__cta" aria-label={`Cotizar ${s.title}`}>
+            <a href="/#contacto" class="btn btn--electric srv-row__cta" aria-label={`Cotizar ${s.title}`}>
               Cotizar
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
+
         </li>
       ))}
     </ul>
@@ -52,34 +56,45 @@ import services from '../data/services.json';
 </section>
 
 <style>
-.services { background: var(--c-dark); }
+.services { background: var(--c-bg-2); }
 
-.services .sh__eyebrow { color: var(--c-electric); }
-.services .sh__title  { color: #fff; }
-.services .sh__sub    { color: rgba(255,255,255,0.6); }
-
-.srv-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s-5);
-}
-
-.srv-card {
-  position: relative;
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  min-height: 420px;
+.srv-list {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  transition: transform var(--t-slow), box-shadow var(--t-slow);
-}
-.srv-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.5);
+  gap: 1px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl, 1.25rem);
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
 }
 
-.srv-card__bg {
+/* Fila */
+.srv-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 340px;
+  background: var(--c-bg-2);
+  transition: background var(--t);
+}
+.srv-row:hover { background: var(--c-bg); }
+
+@media (min-width: 768px) {
+  .srv-row               { grid-template-columns: 1fr 1fr; }
+  .srv-row--reverse      { direction: rtl; }
+  .srv-row--reverse > *  { direction: ltr; }
+}
+
+/* Imagen */
+.srv-row__img-wrap {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+}
+@media (min-width: 768px) {
+  .srv-row__img-wrap { min-height: unset; }
+}
+
+.srv-row__img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -87,53 +102,56 @@ import services from '../data/services.json';
   object-fit: cover;
   transition: transform 0.6s ease;
 }
-.srv-card:hover .srv-card__bg { transform: scale(1.06); }
+.srv-row:hover .srv-row__img { transform: scale(1.04); }
 
-.srv-card__overlay {
+.srv-row__num {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(5,10,20,0.95) 0%,
-    rgba(5,10,20,0.6) 50%,
-    rgba(5,10,20,0.15) 100%
-  );
-  transition: background var(--t-slow);
-}
-.srv-card:hover .srv-card__overlay {
-  background: linear-gradient(
-    to top,
-    rgba(5,10,20,0.98) 0%,
-    rgba(5,10,20,0.75) 55%,
-    rgba(5,10,20,0.25) 100%
-  );
+  bottom: var(--s-4);
+  left: var(--s-5);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: var(--w-bold);
+  color: rgba(255,255,255,0.9);
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  letter-spacing: -0.04em;
 }
 
-.srv-card__body {
-  position: relative;
-  padding: var(--s-7) var(--s-7) var(--s-7);
+/* Texto */
+.srv-row__body {
+  padding: var(--s-8) var(--s-8);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid var(--c-border);
+}
+.srv-row--reverse .srv-row__body {
+  border-left: none;
+  border-right: 1px solid var(--c-border);
+}
+@media (max-width: 767px) {
+  .srv-row__body {
+    border-left: none;
+    border-top: 1px solid var(--c-border);
+  }
 }
 
-.srv-card__title {
+.srv-row__title {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--w-bold);
-  color: #fff;
+  color: var(--c-text);
   margin-bottom: var(--s-3);
-  line-height: 1.2;
 }
 
-.srv-card__desc {
-  font-size: var(--text-sm);
-  color: rgba(255,255,255,0.7);
+.srv-row__desc {
+  font-size: var(--text-base);
+  color: var(--c-text-muted);
   line-height: var(--lead-normal);
   margin-bottom: var(--s-5);
-  max-width: 340px;
 }
 
-.srv-card__features {
+.srv-row__features {
   display: flex;
   flex-direction: column;
   gap: var(--s-2);
@@ -145,27 +163,11 @@ import services from '../data/services.json';
   align-items: center;
   gap: var(--s-2);
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.65);
+  color: var(--c-text-muted);
 }
 .srv-feat svg { color: var(--c-electric); flex-shrink: 0; }
 
-.srv-card__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-2);
-  font-size: var(--text-sm);
-  font-weight: var(--w-semi);
-  color: #fff;
-  background: var(--c-electric);
-  padding: 0.55em 1.2em;
-  border-radius: 999px;
+.srv-row__cta {
   align-self: flex-start;
-  transition: background var(--t), gap var(--t);
 }
-.srv-card__cta:hover {
-  background: var(--c-electric-dim);
-  gap: var(--s-3);
-}
-
-@media (min-width: 768px)  { .srv-grid { grid-template-columns: repeat(3, 1fr); } }
 </style>
