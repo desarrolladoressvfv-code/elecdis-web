@@ -121,10 +121,10 @@ const images = Array.from({ length: project.imageCount }, (_, i) => {
           </div>
 
           <div class="project-info__ctas">
-            <a href="/#contacto" class="btn btn--electric proj-cta">
+            <button type="button" id="open-quote-modal" class="btn btn--electric proj-cta">
               Cotizar un proyecto similar
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+            </button>
           </div>
         </aside>
       </div>
@@ -181,6 +181,81 @@ const images = Array.from({ length: project.imageCount }, (_, i) => {
       <button class="lightbox__nav-btn" id="lightbox-next" aria-label="Imagen siguiente">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
       </button>
+    </div>
+  </div>
+
+  <!-- Modal de cotización -->
+  <div
+    class="quote-modal"
+    id="quote-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="quote-modal-title"
+    hidden
+  >
+    <div class="quote-modal__backdrop" id="quote-modal-backdrop"></div>
+    <div class="quote-modal__panel">
+      <button class="quote-modal__close" id="quote-modal-close" aria-label="Cerrar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="quote-modal__header">
+        <span class="quote-modal__eyebrow">Solicitar cotización</span>
+        <h2 class="quote-modal__title" id="quote-modal-title">Cuéntanos sobre tu proyecto</h2>
+        <p class="quote-modal__sub">Te responderemos en menos de 24 horas hábiles.</p>
+      </div>
+
+      <form
+        class="quote-form"
+        id="quote-form"
+        action="https://formspree.io/f/placeholder"
+        method="POST"
+        novalidate
+      >
+        <input type="hidden" name="proyecto_referencia" id="quote-ref" value={project.title} />
+
+        <div class="quote-form__row">
+          <div class="quote-form__field">
+            <label for="q-nombre">Nombre completo <span aria-hidden="true">*</span></label>
+            <input type="text" id="q-nombre" name="nombre" required placeholder="Juan Pérez" autocomplete="name" />
+          </div>
+          <div class="quote-form__field">
+            <label for="q-empresa">Empresa / Razón social</label>
+            <input type="text" id="q-empresa" name="empresa" placeholder="Mi Empresa SpA" autocomplete="organization" />
+          </div>
+        </div>
+
+        <div class="quote-form__row">
+          <div class="quote-form__field">
+            <label for="q-email">Correo electrónico <span aria-hidden="true">*</span></label>
+            <input type="email" id="q-email" name="email" required placeholder="correo@ejemplo.com" autocomplete="email" />
+          </div>
+          <div class="quote-form__field">
+            <label for="q-telefono">Teléfono</label>
+            <input type="tel" id="q-telefono" name="telefono" placeholder="+56 9 1234 5678" autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="quote-form__field">
+          <label for="q-mensaje">Descripción del proyecto <span aria-hidden="true">*</span></label>
+          <textarea id="q-mensaje" name="mensaje" required rows="4" placeholder="Describe brevemente qué necesitas: tipo de instalación, superficie aproximada, ubicación, plazos..."></textarea>
+        </div>
+
+        <div class="quote-form__ref-info">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Referencia: <strong>{project.title}</strong>
+        </div>
+
+        <button type="submit" class="btn btn--electric quote-form__submit">
+          Enviar solicitud
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <div class="quote-form__success" id="quote-success" hidden>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p>¡Mensaje enviado! Te contactaremos pronto.</p>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -464,6 +539,162 @@ const images = Array.from({ length: project.imageCount }, (_, i) => {
 @media (min-width: 1024px) {
   .project-detail__layout { grid-template-columns: 3fr 2fr; }
 }
+
+/* ── Quote Modal ── */
+.quote-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-4);
+}
+.quote-modal[hidden] { display: none; }
+
+.quote-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(13,17,23,0.72);
+  backdrop-filter: blur(4px);
+}
+
+.quote-modal__panel {
+  position: relative;
+  background: var(--c-bg-2);
+  border-radius: var(--r-xl, 1rem);
+  border: 1px solid var(--c-border);
+  padding: var(--s-8) var(--s-8) var(--s-8);
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+  animation: modal-in 0.22s ease;
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.quote-modal__close {
+  position: absolute;
+  top: var(--s-4);
+  right: var(--s-4);
+  color: var(--c-text-muted);
+  padding: var(--s-2);
+  border-radius: var(--r-sm);
+  transition: color var(--t), background var(--t);
+}
+.quote-modal__close:hover { color: var(--c-text); background: var(--c-bg-3); }
+
+.quote-modal__header { margin-bottom: var(--s-6); }
+.quote-modal__eyebrow {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: var(--w-semi);
+  color: var(--c-electric);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--s-2);
+}
+.quote-modal__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--w-bold);
+  color: var(--c-text);
+  margin-bottom: var(--s-2);
+}
+.quote-modal__sub {
+  font-size: var(--text-sm);
+  color: var(--c-text-muted);
+}
+
+/* Form */
+.quote-form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+  margin-bottom: var(--s-4);
+}
+@media (min-width: 480px) {
+  .quote-form__row { grid-template-columns: 1fr 1fr; }
+}
+
+.quote-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  margin-bottom: var(--s-4);
+}
+.quote-form__row .quote-form__field { margin-bottom: 0; }
+
+.quote-form__field label {
+  font-size: var(--text-sm);
+  font-weight: var(--w-medium);
+  color: var(--c-text-muted);
+}
+.quote-form__field label span { color: var(--c-electric); }
+
+.quote-form__field input,
+.quote-form__field textarea {
+  background: var(--c-bg);
+  border: 1.5px solid var(--c-border-2);
+  border-radius: var(--r-md);
+  padding: 0.65em 0.9em;
+  font-size: var(--text-base);
+  color: var(--c-text);
+  font-family: inherit;
+  transition: border-color var(--t), box-shadow var(--t);
+  outline: none;
+  width: 100%;
+}
+.quote-form__field input:focus,
+.quote-form__field textarea:focus {
+  border-color: var(--c-electric);
+  box-shadow: 0 0 0 3px var(--c-electric-glow);
+}
+.quote-form__field input::placeholder,
+.quote-form__field textarea::placeholder { color: var(--c-text-faint); }
+.quote-form__field textarea { resize: vertical; min-height: 100px; }
+
+.quote-form__ref-info {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--text-xs);
+  color: var(--c-text-faint);
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  padding: var(--s-2) var(--s-3);
+  margin-bottom: var(--s-5);
+}
+.quote-form__ref-info svg { flex-shrink: 0; color: var(--c-electric); }
+.quote-form__ref-info strong { color: var(--c-text-muted); }
+
+.quote-form__submit {
+  width: 100%;
+  justify-content: center;
+  font-size: var(--text-base);
+  padding: 0.85em 1.5em;
+}
+
+.quote-form__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-8) 0;
+  color: var(--c-electric);
+  text-align: center;
+}
+.quote-form__success p {
+  font-size: var(--text-lg);
+  font-weight: var(--w-semi);
+  color: var(--c-text);
+}
+.quote-form__success[hidden] { display: none; }
 </style>
 
 <script define:vars={{ images }}>
@@ -514,5 +745,52 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + total) % total; updateLightbox(); }
   if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % total; updateLightbox(); }
+});
+
+// ── Quote Modal ──
+const quoteModal = document.getElementById('quote-modal');
+const quoteModalClose = document.getElementById('quote-modal-close');
+const quoteModalBackdrop = document.getElementById('quote-modal-backdrop');
+const quoteForm = document.getElementById('quote-form');
+const quoteSuccess = document.getElementById('quote-success');
+
+function openQuoteModal() {
+  if (!quoteModal) return;
+  quoteModal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  quoteModalClose?.focus();
+}
+
+function closeQuoteModal() {
+  if (!quoteModal) return;
+  quoteModal.hidden = true;
+  document.body.style.overflow = '';
+}
+
+document.getElementById('open-quote-modal')?.addEventListener('click', openQuoteModal);
+quoteModalClose?.addEventListener('click', closeQuoteModal);
+quoteModalBackdrop?.addEventListener('click', closeQuoteModal);
+
+document.addEventListener('keydown', (e) => {
+  if (quoteModal?.hidden) return;
+  if (e.key === 'Escape') closeQuoteModal();
+});
+
+quoteForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const data = new FormData(form);
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      if (quoteSuccess) quoteSuccess.hidden = false;
+      setTimeout(closeQuoteModal, 3000);
+    }
+  } catch (_) {}
 });
 </script>
