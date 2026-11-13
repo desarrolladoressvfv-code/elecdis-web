@@ -1,5 +1,13 @@
 ---
 import services from '../data/services.json';
+
+const clientRubros = [
+  { icon: 'M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z', label: 'Salud' },
+  { icon: 'M2 20h20M6 20V10l6-6 6 6v10M10 20v-6h4v6', label: 'Industrial' },
+  { icon: 'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10', label: 'Comercial' },
+  { icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', label: 'Institucional' },
+  { icon: 'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z', label: 'Residencial' },
+];
 ---
 <section class="section services" id="servicios" aria-labelledby="srv-title">
   <div class="container">
@@ -12,26 +20,16 @@ import services from '../data/services.json';
       </p>
     </div>
 
-    <ul class="srv-list" role="list">
+    <!-- Cards con foto -->
+    <ul class="srv-grid" role="list">
       {services.map((s, i) => (
-        <li class={`srv-row${i % 2 === 1 ? ' srv-row--reverse' : ''}`} data-anim data-anim-delay={String(i + 1)}>
-
-          <div class="srv-row__img-wrap">
-            <img
-              src={s.image}
-              alt={s.title}
-              class="srv-row__img"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="srv-row__num" aria-hidden="true">0{i + 1}</div>
-          </div>
-
-          <div class="srv-row__body">
-            <h3 class="srv-row__title">{s.title}</h3>
-            <p class="srv-row__desc">{s.description}</p>
-
-            <ul class="srv-row__features" role="list">
+        <li class="srv-card" data-anim data-anim-delay={String(i + 1)}>
+          <img src={s.image} alt={s.title} class="srv-card__bg" loading="lazy" decoding="async" />
+          <div class="srv-card__overlay"></div>
+          <div class="srv-card__body">
+            <h3 class="srv-card__title">{s.title}</h3>
+            <p class="srv-card__desc">{s.description}</p>
+            <ul class="srv-card__features" role="list">
               {s.features.map(f => (
                 <li class="srv-feat">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -42,59 +40,62 @@ import services from '../data/services.json';
                 </li>
               ))}
             </ul>
-
-            <a href="/#contacto" class="btn btn--electric srv-row__cta" aria-label={`Cotizar ${s.title}`}>
+            <a href="/#contacto" class="srv-card__cta" aria-label={`Cotizar ${s.title}`}>
               Cotizar
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
-
         </li>
       ))}
     </ul>
+
+    <!-- Franja: rubros que atendemos -->
+    <div class="rubros" data-anim>
+      <p class="rubros__label">Atendemos</p>
+      <ul class="rubros__list" role="list">
+        {clientRubros.map(r => (
+          <li class="rubro">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d={r.icon}/>
+            </svg>
+            {r.label}
+          </li>
+        ))}
+      </ul>
+    </div>
+
   </div>
 </section>
 
 <style>
 .services { background: var(--c-bg-2); }
 
-.srv-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-xl, 1.25rem);
-  overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-}
-
-/* Fila */
-.srv-row {
+/* Grid de cards */
+.srv-grid {
   display: grid;
   grid-template-columns: 1fr;
-  min-height: 340px;
-  background: var(--c-bg-2);
-  transition: background var(--t);
+  gap: var(--s-5);
+  margin-bottom: var(--s-10);
 }
-.srv-row:hover { background: var(--c-bg); }
+@media (min-width: 768px) { .srv-grid { grid-template-columns: repeat(3, 1fr); } }
 
-@media (min-width: 768px) {
-  .srv-row               { grid-template-columns: 1fr 1fr; }
-  .srv-row--reverse      { direction: rtl; }
-  .srv-row--reverse > *  { direction: ltr; }
-}
-
-/* Imagen */
-.srv-row__img-wrap {
+/* Card */
+.srv-card {
   position: relative;
+  border-radius: var(--r-lg);
   overflow: hidden;
-  min-height: 260px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform var(--t-slow), box-shadow var(--t-slow);
 }
-@media (min-width: 768px) {
-  .srv-row__img-wrap { min-height: unset; }
+.srv-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.18);
 }
 
-.srv-row__img {
+.srv-card__bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -102,72 +103,111 @@ import services from '../data/services.json';
   object-fit: cover;
   transition: transform 0.6s ease;
 }
-.srv-row:hover .srv-row__img { transform: scale(1.04); }
+.srv-card:hover .srv-card__bg { transform: scale(1.06); }
 
-.srv-row__num {
+.srv-card__overlay {
   position: absolute;
-  bottom: var(--s-4);
-  left: var(--s-5);
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: var(--w-bold);
-  color: rgba(255,255,255,0.9);
-  line-height: 1;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-  letter-spacing: -0.04em;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5,10,20,0.95) 0%, rgba(5,10,20,0.55) 50%, rgba(5,10,20,0.1) 100%);
+  transition: background var(--t-slow);
+}
+.srv-card:hover .srv-card__overlay {
+  background: linear-gradient(to top, rgba(5,10,20,0.98) 0%, rgba(5,10,20,0.75) 55%, rgba(5,10,20,0.2) 100%);
 }
 
-/* Texto */
-.srv-row__body {
-  padding: var(--s-8) var(--s-8);
+.srv-card__body {
+  position: relative;
+  padding: var(--s-7);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border-left: 1px solid var(--c-border);
-}
-.srv-row--reverse .srv-row__body {
-  border-left: none;
-  border-right: 1px solid var(--c-border);
-}
-@media (max-width: 767px) {
-  .srv-row__body {
-    border-left: none;
-    border-top: 1px solid var(--c-border);
-  }
 }
 
-.srv-row__title {
+.srv-card__title {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--w-bold);
-  color: var(--c-text);
+  color: #fff;
   margin-bottom: var(--s-3);
 }
 
-.srv-row__desc {
-  font-size: var(--text-base);
-  color: var(--c-text-muted);
+.srv-card__desc {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.7);
   line-height: var(--lead-normal);
   margin-bottom: var(--s-5);
 }
 
-.srv-row__features {
+.srv-card__features {
   display: flex;
   flex-direction: column;
   gap: var(--s-2);
   margin-bottom: var(--s-6);
 }
-
 .srv-feat {
   display: flex;
   align-items: center;
   gap: var(--s-2);
   font-size: var(--text-sm);
-  color: var(--c-text-muted);
+  color: rgba(255,255,255,0.65);
 }
 .srv-feat svg { color: var(--c-electric); flex-shrink: 0; }
 
-.srv-row__cta {
+.srv-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--text-sm);
+  font-weight: var(--w-semi);
+  color: #fff;
+  background: var(--c-electric);
+  padding: 0.55em 1.2em;
+  border-radius: 999px;
   align-self: flex-start;
+  transition: background var(--t), gap var(--t);
 }
+.srv-card__cta:hover { background: var(--c-electric-dim); gap: var(--s-3); }
+
+/* Franja rubros */
+.rubros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4) var(--s-6);
+  padding: var(--s-6) var(--s-8);
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+}
+
+.rubros__label {
+  font-size: var(--text-xs);
+  font-weight: var(--w-semi);
+  color: var(--c-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.rubros__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  flex: 1;
+}
+
+.rubro {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--text-sm);
+  font-weight: var(--w-medium);
+  color: var(--c-text-muted);
+  padding: var(--s-2) var(--s-4);
+  background: var(--c-bg-2);
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  transition: border-color var(--t), color var(--t);
+}
+.rubro:hover { border-color: var(--c-electric); color: var(--c-electric); }
+.rubro svg { color: var(--c-electric); flex-shrink: 0; }
 </style>
