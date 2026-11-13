@@ -117,14 +117,6 @@ const brandMeta: Record<string, { color: string; logo: string }> = {
       })}
     </ul>
 
-    <!-- Nota verificación Legrand -->
-    <p class="certs-note" data-anim>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      Para validar certificados Legrand escribe a
-      <a href="mailto:legrandacademychile@legrand.cl">legrandacademychile@legrand.cl</a>
-      indicando el número de certificado.
-    </p>
-
   </div>
 </section>
 
@@ -289,23 +281,6 @@ const brandMeta: Record<string, { color: string; logo: string }> = {
   color: #fff;
   border-color: var(--c-electric);
 }
-
-/* Nota */
-.certs-note {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--s-2);
-  font-size: var(--text-xs);
-  color: var(--c-text-faint);
-  background: var(--c-bg-2);
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-md);
-  padding: var(--s-3) var(--s-4);
-  line-height: 1.5;
-}
-.certs-note svg { flex-shrink: 0; margin-top: 1px; }
-.certs-note a { color: var(--c-electric); }
-.certs-note a:hover { text-decoration: underline; }
 
 /* Lightbox */
 .cert-lightbox {
