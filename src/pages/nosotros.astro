@@ -1,0 +1,409 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+---
+<BaseLayout
+  title="Nosotros – ELECDIS SpA"
+  description="Conoce la misión, visión y valores de ELECDIS SpA, empresa de ingeniería eléctrica dedicada a soluciones integrales para los sectores industrial, comercial y domiciliario."
+  pageUrl="/nosotros"
+>
+  <Header currentPath="/nosotros" />
+
+  <main id="main-content">
+
+    <!-- Hero interior -->
+    <section class="page-hero" aria-label="Nosotros">
+      <div class="page-hero__bg" aria-hidden="true">
+        <canvas id="about-canvas"></canvas>
+      </div>
+      <div class="container page-hero__inner">
+        <p class="page-hero__eyebrow">Quiénes somos</p>
+        <h1 class="page-hero__title">Nosotros</h1>
+        <p class="page-hero__sub">
+          Ingeniería eléctrica con experiencia técnica, innovación y compromiso al servicio de cada cliente.
+        </p>
+      </div>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section class="section mv-sec" aria-labelledby="mv-title">
+      <div class="container">
+        <div class="mv-grid">
+
+          <article class="mv-card" data-anim>
+            <div class="mv-card__icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h2 class="mv-card__heading">Misión</h2>
+            <p class="mv-card__text">
+              Ser una empresa de ingeniería eléctrica dedicada al desarrollo y ejecución de soluciones integrales
+              para los sectores industrial, comercial y domiciliario, mediante el diseño, fabricación e implementación
+              de proyectos e instalaciones eléctricas. Nos comprometemos a entregar servicios de calidad, seguros y
+              eficientes, adaptados a las necesidades de cada cliente, a través de la experiencia técnica, la innovación
+              y el compromiso de nuestro equipo de trabajo, contribuyendo al funcionamiento y continuidad de sus operaciones.
+            </p>
+          </article>
+
+          <article class="mv-card" data-anim data-anim-delay="1">
+            <div class="mv-card__icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h2 class="mv-card__heading">Visión</h2>
+            <p class="mv-card__text">
+              Consolidarnos como una empresa referente en el rubro de la ingeniería eléctrica a nivel nacional,
+              reconocida por la calidad de nuestros proyectos, la fabricación de tableros eléctricos y nuestra
+              capacidad para entregar soluciones técnicas integrales. Aspiramos a fortalecer nuestra posición en
+              el mercado mediante la innovación, el desarrollo tecnológico, la excelencia operacional y la
+              construcción de relaciones comerciales duraderas, proyectándonos hacia un crecimiento sostenible y competitivo.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="section values-sec" aria-labelledby="values-title">
+      <div class="container">
+        <div class="sh sh--center" data-anim>
+          <p class="sh__eyebrow">Lo que nos define</p>
+          <h2 class="sh__title" id="values-title">Nuestros valores</h2>
+        </div>
+
+        <ul class="values-grid" role="list">
+          <li class="value-card" data-anim data-anim-delay="1">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="value-card__name">Calidad técnica</h3>
+            <p class="value-card__desc">Estándares rigurosos en cada proyecto, respaldados por normativa vigente.</p>
+          </li>
+          <li class="value-card" data-anim data-anim-delay="2">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <h3 class="value-card__name">Innovación</h3>
+            <p class="value-card__desc">Adoptamos tecnología y procesos modernos para soluciones más eficientes.</p>
+          </li>
+          <li class="value-card" data-anim data-anim-delay="3">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3 class="value-card__name">Seguridad</h3>
+            <p class="value-card__desc">Priorizamos la seguridad en cada instalación, para nuestro equipo y clientes.</p>
+          </li>
+          <li class="value-card" data-anim data-anim-delay="4">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3 class="value-card__name">Compromiso</h3>
+            <p class="value-card__desc">Relaciones duraderas con nuestros clientes, basadas en la confianza y la entrega.</p>
+          </li>
+          <li class="value-card" data-anim data-anim-delay="1">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3 class="value-card__name">Eficiencia</h3>
+            <p class="value-card__desc">Optimizamos tiempos y recursos sin comprometer la calidad del resultado.</p>
+          </li>
+          <li class="value-card" data-anim data-anim-delay="2">
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <h3 class="value-card__name">Crecimiento sostenible</h3>
+            <p class="value-card__desc">Proyectamos nuestra empresa hacia el futuro con una visión de largo plazo.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-sec" aria-label="Contacto">
+      <div class="container cta-inner" data-anim>
+        <div class="cta-text">
+          <h2 class="cta-title">¿Tienes un proyecto eléctrico?</h2>
+          <p class="cta-sub">Cuéntanos sobre tu necesidad y te entregamos una solución a medida.</p>
+        </div>
+        <a href="/#contacto" class="btn btn--electric cta-btn">Solicitar cotización</a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+  <WhatsAppButton />
+</BaseLayout>
+
+<style>
+/* ── Hero interior ── */
+.page-hero {
+  position: relative;
+  background: #0D1117;
+  overflow: hidden;
+  padding-block: var(--s-20) var(--s-16);
+  --c-text: #F9FAFB;
+  --c-text-muted: #9CA3AF;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+}
+.page-hero__bg canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--s-4);
+}
+.page-hero__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--w-semi);
+  color: var(--c-electric, #60A5FA);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: var(--w-bold);
+  color: #F9FAFB;
+  line-height: 1.1;
+}
+.page-hero__sub {
+  font-size: var(--text-lg);
+  color: #9CA3AF;
+  max-width: 540px;
+  line-height: 1.6;
+}
+
+/* ── Misión / Visión ── */
+.mv-sec { background: var(--c-bg); }
+.mv-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-6);
+}
+@media (min-width: 768px) { .mv-grid { grid-template-columns: 1fr 1fr; } }
+
+.mv-card {
+  background: var(--c-bg-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: var(--s-9);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  transition: box-shadow var(--t-slow), border-color var(--t);
+}
+.mv-card:hover {
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  border-color: color-mix(in srgb, var(--c-electric) 25%, transparent);
+}
+.mv-card__icon {
+  width: 60px;
+  height: 60px;
+  background: color-mix(in srgb, var(--c-electric) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c-electric) 20%, transparent);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-electric);
+}
+.mv-card__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--w-bold);
+  color: var(--c-text);
+}
+.mv-card__text {
+  font-size: var(--text-base);
+  color: var(--c-text-muted);
+  line-height: 1.8;
+}
+
+/* ── Valores ── */
+.values-sec { background: var(--c-bg-2); }
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+}
+@media (min-width: 640px)  { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .values-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.value-card {
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: var(--s-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  transition: transform var(--t-slow), box-shadow var(--t-slow), border-color var(--t);
+}
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+  border-color: color-mix(in srgb, var(--c-electric) 25%, transparent);
+}
+.value-card__icon {
+  width: 48px;
+  height: 48px;
+  background: color-mix(in srgb, var(--c-electric) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c-electric) 15%, transparent);
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-electric);
+}
+.value-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--w-bold);
+  color: var(--c-text);
+}
+.value-card__desc {
+  font-size: var(--text-sm);
+  color: var(--c-text-muted);
+  line-height: 1.6;
+}
+
+/* ── CTA ── */
+.cta-sec { background: var(--c-electric); }
+.cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--s-6);
+}
+@media (min-width: 768px) {
+  .cta-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--w-bold);
+  color: #fff;
+}
+.cta-sub { font-size: var(--text-base); color: rgba(255,255,255,0.85); margin-top: var(--s-2); }
+.cta-btn {
+  background: #fff;
+  color: var(--c-electric);
+  border: none;
+  flex-shrink: 0;
+  font-weight: var(--w-bold);
+  padding: var(--s-3) var(--s-7);
+}
+.cta-btn:hover { background: #F0F9FF; }
+</style>
+
+<script>
+/* Canvas eléctrico del hero */
+(function () {
+  const canvas = document.getElementById('about-canvas') as HTMLCanvasElement | null;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const NODE_COUNT = 32;
+  const MAX_DIST = 170;
+  const PULSE_INTERVAL = 1800;
+
+  interface Node { x: number; y: number; vx: number; vy: number; r: number; }
+  interface Pulse { fromX: number; fromY: number; toX: number; toY: number; t: number; speed: number; }
+
+  let W = 0, H = 0;
+  let nodes: Node[] = [];
+  let pulses: Pulse[] = [];
+  let lastPulse = 0;
+  let raf = 0;
+
+  function resize() {
+    const rect = canvas!.parentElement!.getBoundingClientRect();
+    W = canvas!.width  = rect.width;
+    H = canvas!.height = rect.height;
+  }
+
+  function init() {
+    nodes = Array.from({ length: NODE_COUNT }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.5 + 1,
+    }));
+  }
+
+  function spawnPulse() {
+    const edges: [number, number][] = [];
+    for (let i = 0; i < nodes.length; i++)
+      for (let j = i + 1; j < nodes.length; j++)
+        if (Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y) < MAX_DIST)
+          edges.push([i, j]);
+    if (!edges.length) return;
+    const [a, b] = edges[Math.floor(Math.random() * edges.length)];
+    pulses.push({ fromX: nodes[a].x, fromY: nodes[a].y, toX: nodes[b].x, toY: nodes[b].y, t: 0, speed: 0.02 + Math.random() * 0.015 });
+  }
+
+  function draw(ts: number) {
+    ctx!.clearRect(0, 0, W, H);
+    for (const n of nodes) {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+    }
+    if (ts - lastPulse > PULSE_INTERVAL) { spawnPulse(); lastPulse = ts; }
+    pulses = pulses.filter(p => p.t <= 1);
+    for (const p of pulses) p.t += p.speed;
+
+    for (let i = 0; i < nodes.length; i++)
+      for (let j = i + 1; j < nodes.length; j++) {
+        const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+        if (d > MAX_DIST) continue;
+        ctx!.strokeStyle = `rgba(96,165,250,${(1 - d / MAX_DIST) * 0.2})`;
+        ctx!.lineWidth = 0.8;
+        ctx!.beginPath();
+        ctx!.moveTo(nodes[i].x, nodes[i].y);
+        ctx!.lineTo(nodes[j].x, nodes[j].y);
+        ctx!.stroke();
+      }
+
+    for (const p of pulses) {
+      const x = p.fromX + (p.toX - p.fromX) * p.t;
+      const y = p.fromY + (p.toY - p.fromY) * p.t;
+      const g = ctx!.createRadialGradient(x, y, 0, x, y, 10);
+      g.addColorStop(0, 'rgba(147,210,255,0.9)');
+      g.addColorStop(0.3, 'rgba(96,165,250,0.5)');
+      g.addColorStop(1, 'rgba(96,165,250,0)');
+      ctx!.fillStyle = g;
+      ctx!.beginPath(); ctx!.arc(x, y, 10, 0, Math.PI * 2); ctx!.fill();
+    }
+
+    for (const n of nodes) {
+      ctx!.fillStyle = 'rgba(96,165,250,0.5)';
+      ctx!.beginPath(); ctx!.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx!.fill();
+    }
+    raf = requestAnimationFrame(draw);
+  }
+
+  resize(); init(); raf = requestAnimationFrame(draw);
+  window.addEventListener('resize', resize, { passive: true });
+})();
+</script>

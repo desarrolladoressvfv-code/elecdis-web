@@ -14,7 +14,7 @@ const { currentPath = '/' } = Astro.props;
     <!-- Nav desktop -->
     <nav class="hdr__nav" aria-label="Navegación principal">
       <ul class="nav__list" role="list">
-        <li><a href="/#nosotros" class="nav__link">Nosotros</a></li>
+        <li><a href="/nosotros" class="nav__link" aria-current={currentPath === '/nosotros' ? 'page' : undefined}>Nosotros</a></li>
         <li><a href="/#servicios" class="nav__link">Servicios</a></li>
         <li>
           <a
@@ -48,7 +48,7 @@ const { currentPath = '/' } = Astro.props;
   <!-- Mobile nav -->
   <nav class="mobile-nav" id="mobile-nav" aria-hidden="true" aria-label="Menú móvil">
     <ul role="list">
-      <li><a href="/#nosotros" class="mnav__link">Nosotros</a></li>
+      <li><a href="/nosotros" class="mnav__link">Nosotros</a></li>
       <li><a href="/#servicios" class="mnav__link">Servicios</a></li>
       <li><a href="/proyectos/" class="mnav__link">Proyectos</a></li>
       <li><a href="/#certificaciones" class="mnav__link">Certificaciones</a></li>
