@@ -1,0 +1,142 @@
+---
+const brands = [
+  { name: 'Schneider Electric', file: 'schneider.jpg' },
+  { name: 'Legrand',            file: 'legrand.jpg'   },
+  { name: 'Siemens',            file: 'siemens.jpg'   },
+  { name: 'Phoenix Contact',    file: 'phoenix.jpg'   },
+  { name: 'Rittal',             file: 'rittal.jpg'    },
+  { name: 'BTicino',            file: 'bticino.jpg'   },
+  { name: 'Rhona',              file: 'rhona.jpg'     },
+  { name: 'Sonepar',            file: 'sonepar.jpg'   },
+  { name: 'CHINT Electric',     file: 'chint.jpg'     },
+  { name: 'Dartel',             file: 'dartel.jpg'    },
+  { name: 'Tasco',              file: 'tasco.jpg'     },
+  { name: 'Lexo Electric',      file: 'lexo.jpg'      },
+  { name: 'Mega Electric',      file: 'mega.jpg'      },
+  { name: 'Tosunlux',           file: 'tosunlux.jpg'  },
+];
+---
+
+<section class="brands-sec" aria-label="Nuestros proveedores">
+  <div class="container brands-header">
+    <p class="brands-label">Trabajamos con las mejores marcas</p>
+  </div>
+
+  <div class="brands-track-wrap" aria-hidden="true">
+    <div class="brands-track">
+      {/* Primera pasada */}
+      {brands.map(b => (
+        <div class="brand-item">
+          <img
+            src={`/brands/${b.file}`}
+            alt={b.name}
+            width="120"
+            height="60"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ))}
+      {/* Segunda pasada para el loop infinito */}
+      {brands.map(b => (
+        <div class="brand-item" aria-hidden="true">
+          <img
+            src={`/brands/${b.file}`}
+            alt=""
+            width="120"
+            height="60"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.brands-sec {
+  background: var(--c-bg-2);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  padding-block: var(--s-10);
+  overflow: hidden;
+}
+
+.brands-header {
+  text-align: center;
+  margin-bottom: var(--s-7);
+}
+
+.brands-label {
+  font-size: var(--text-xs);
+  font-weight: var(--w-semi);
+  color: var(--c-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Track exterior — enmascara con gradientes laterales */
+.brands-track-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.brands-track-wrap::before,
+.brands-track-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.brands-track-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--c-bg-2), transparent);
+}
+.brands-track-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--c-bg-2), transparent);
+}
+
+/* Track con animación */
+.brands-track {
+  display: flex;
+  align-items: center;
+  gap: var(--s-10);
+  width: max-content;
+  animation: scroll-brands 32s linear infinite;
+}
+.brands-track:hover { animation-play-state: paused; }
+
+@keyframes scroll-brands {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.brand-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 var(--s-4);
+}
+
+.brand-item img {
+  height: 40px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+  /* Escala de grises por defecto */
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.3s ease;
+}
+.brand-item:hover img {
+  filter: grayscale(0) opacity(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brands-track { animation: none; }
+}
+</style>
