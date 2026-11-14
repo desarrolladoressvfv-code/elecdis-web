@@ -24,22 +24,50 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         <p class="page-hero__sub">
           Ingeniería eléctrica con experiencia técnica, innovación y compromiso al servicio de cada cliente.
         </p>
+        <div class="page-hero__stats" aria-hidden="true">
+          <div class="hero-stat">
+            <span class="hero-stat__num">10+</span>
+            <span class="hero-stat__label">Años de experiencia</span>
+          </div>
+          <div class="hero-stat__divider"></div>
+          <div class="hero-stat">
+            <span class="hero-stat__num">3</span>
+            <span class="hero-stat__label">Sectores atendidos</span>
+          </div>
+          <div class="hero-stat__divider"></div>
+          <div class="hero-stat">
+            <span class="hero-stat__num">100%</span>
+            <span class="hero-stat__label">Compromiso técnico</span>
+          </div>
+        </div>
+      </div>
+      <div class="page-hero__scroll" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </div>
     </section>
 
     <!-- Misión y Visión -->
-    <section class="section mv-sec" aria-labelledby="mv-title">
+    <section class="section mv-sec" aria-labelledby="mv-heading">
       <div class="container">
+        <div class="sh sh--center mv-header" data-anim>
+          <p class="sh__eyebrow">Nuestra razón de ser</p>
+          <h2 class="sh__title" id="mv-heading">Misión &amp; Visión</h2>
+        </div>
         <div class="mv-grid">
 
           <article class="mv-card" data-anim>
-            <div class="mv-card__icon" aria-hidden="true">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
+            <div class="mv-card__accent" aria-hidden="true"></div>
+            <div class="mv-card__header">
+              <div class="mv-card__icon" aria-hidden="true">
+                <!-- Target / mission icon -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              </div>
+              <h2 class="mv-card__heading">Misión</h2>
             </div>
-            <h2 class="mv-card__heading">Misión</h2>
             <p class="mv-card__text">
               Ser una empresa de ingeniería eléctrica dedicada al desarrollo y ejecución de soluciones integrales
               para los sectores industrial, comercial y domiciliario, mediante el diseño, fabricación e implementación
@@ -50,13 +78,18 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
           </article>
 
           <article class="mv-card" data-anim data-anim-delay="1">
-            <div class="mv-card__icon" aria-hidden="true">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                <circle cx="12" cy="12" r="3"/>
-              </svg>
+            <div class="mv-card__accent" aria-hidden="true"></div>
+            <div class="mv-card__header">
+              <div class="mv-card__icon" aria-hidden="true">
+                <!-- Telescope / vision icon -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 15v6M9 21h6"/>
+                </svg>
+              </div>
+              <h2 class="mv-card__heading">Visión</h2>
             </div>
-            <h2 class="mv-card__heading">Visión</h2>
             <p class="mv-card__text">
               Consolidarnos como una empresa referente en el rubro de la ingeniería eléctrica a nivel nacional,
               reconocida por la calidad de nuestros proyectos, la fabricación de tableros eléctricos y nuestra
@@ -72,51 +105,80 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
     <!-- Valores -->
     <section class="section values-sec" aria-labelledby="values-title">
-      <div class="container">
+      <div class="values-sec__bg" aria-hidden="true"></div>
+      <div class="container" style="position:relative;z-index:1">
         <div class="sh sh--center" data-anim>
           <p class="sh__eyebrow">Lo que nos define</p>
           <h2 class="sh__title" id="values-title">Nuestros valores</h2>
+          <p class="sh__sub">Los principios que guían cada decisión y cada proyecto que emprendemos.</p>
         </div>
 
         <ul class="values-grid" role="list">
           <li class="value-card" data-anim data-anim-delay="1">
+            <div class="value-card__num" aria-hidden="true">01</div>
             <div class="value-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <!-- Shield / quality -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
             </div>
             <h3 class="value-card__name">Calidad técnica</h3>
             <p class="value-card__desc">Estándares rigurosos en cada proyecto, respaldados por normativa vigente.</p>
           </li>
           <li class="value-card" data-anim data-anim-delay="2">
+            <div class="value-card__num" aria-hidden="true">02</div>
             <div class="value-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              <!-- Lightbulb / innovation -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M12 2a7 7 0 0 1 7 7c0 2.69-1.52 5.04-3.75 6.27L15 17H9l-.25-1.73A7 7 0 0 1 5 9a7 7 0 0 1 7-7z"/>
+                <path d="M9 17v1a3 3 0 0 0 6 0v-1"/>
+              </svg>
             </div>
             <h3 class="value-card__name">Innovación</h3>
             <p class="value-card__desc">Adoptamos tecnología y procesos modernos para soluciones más eficientes.</p>
           </li>
           <li class="value-card" data-anim data-anim-delay="3">
+            <div class="value-card__num" aria-hidden="true">03</div>
             <div class="value-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <!-- Lightning / safety -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
             </div>
             <h3 class="value-card__name">Seguridad</h3>
             <p class="value-card__desc">Priorizamos la seguridad en cada instalación, para nuestro equipo y clientes.</p>
           </li>
-          <li class="value-card" data-anim data-anim-delay="4">
+          <li class="value-card" data-anim data-anim-delay="1">
+            <div class="value-card__num" aria-hidden="true">04</div>
             <div class="value-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              <!-- Handshake / commitment -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
             </div>
             <h3 class="value-card__name">Compromiso</h3>
             <p class="value-card__desc">Relaciones duraderas con nuestros clientes, basadas en la confianza y la entrega.</p>
           </li>
-          <li class="value-card" data-anim data-anim-delay="1">
+          <li class="value-card" data-anim data-anim-delay="2">
+            <div class="value-card__num" aria-hidden="true">05</div>
             <div class="value-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <!-- Pulse / efficiency -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
             </div>
             <h3 class="value-card__name">Eficiencia</h3>
             <p class="value-card__desc">Optimizamos tiempos y recursos sin comprometer la calidad del resultado.</p>
           </li>
-          <li class="value-card" data-anim data-anim-delay="2">
+          <li class="value-card" data-anim data-anim-delay="3">
+            <div class="value-card__num" aria-hidden="true">06</div>
             <div class="value-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              <!-- Trending up / growth -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                <polyline points="17 6 23 6 23 12"/>
+              </svg>
             </div>
             <h3 class="value-card__name">Crecimiento sostenible</h3>
             <p class="value-card__desc">Proyectamos nuestra empresa hacia el futuro con una visión de largo plazo.</p>
@@ -127,12 +189,19 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
     <!-- CTA -->
     <section class="section cta-sec" aria-label="Contacto">
+      <div class="cta-sec__bg" aria-hidden="true">
+        <div class="cta-sec__glow"></div>
+      </div>
       <div class="container cta-inner" data-anim>
         <div class="cta-text">
-          <h2 class="cta-title">¿Tienes un proyecto eléctrico?</h2>
+          <p class="cta-eyebrow">¿Tienes un proyecto?</p>
+          <h2 class="cta-title">Hablemos de tu próximo proyecto eléctrico</h2>
           <p class="cta-sub">Cuéntanos sobre tu necesidad y te entregamos una solución a medida.</p>
         </div>
-        <a href="/#contacto" class="btn btn--electric cta-btn">Solicitar cotización</a>
+        <a href="/#contacto" class="btn cta-btn">
+          Solicitar cotización
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </section>
 
@@ -143,19 +212,32 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 </BaseLayout>
 
 <style>
+/* ── Animations ── */
+[data-anim] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+[data-anim].visible { opacity: 1; transform: none; }
+[data-anim-delay="1"] { transition-delay: 0.1s; }
+[data-anim-delay="2"] { transition-delay: 0.2s; }
+[data-anim-delay="3"] { transition-delay: 0.3s; }
+[data-anim-delay="4"] { transition-delay: 0.4s; }
+
 /* ── Hero interior ── */
 .page-hero {
   position: relative;
   background: #0D1117;
   overflow: hidden;
-  padding-block: var(--s-20) var(--s-16);
+  padding-top: calc(76px + var(--s-20));
+  padding-bottom: var(--s-20);
   --c-text: #F9FAFB;
   --c-text-muted: #9CA3AF;
 }
 .page-hero__bg {
   position: absolute;
   inset: 0;
-  opacity: 0.45;
+  opacity: 0.5;
 }
 .page-hero__bg canvas {
   width: 100%;
@@ -169,31 +251,100 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--s-4);
+  gap: var(--s-5);
 }
 .page-hero__eyebrow {
   font-size: var(--text-xs);
   font-weight: var(--w-semi);
-  color: var(--c-electric, #60A5FA);
+  color: #60A5FA;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.1s forwards;
 }
 .page-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: var(--w-bold);
   color: #F9FAFB;
-  line-height: 1.1;
+  line-height: 1.0;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.2s forwards;
 }
 .page-hero__sub {
-  font-size: var(--text-lg);
+  font-size: clamp(var(--text-base), 2vw, var(--text-lg));
   color: #9CA3AF;
-  max-width: 540px;
-  line-height: 1.6;
+  max-width: 520px;
+  line-height: 1.65;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.3s forwards;
+}
+
+/* Hero stats */
+.page-hero__stats {
+  display: flex;
+  align-items: center;
+  gap: var(--s-6);
+  margin-top: var(--s-4);
+  padding: var(--s-5) var(--s-8);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.45s forwards;
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.hero-stat__num {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: var(--w-bold);
+  color: #60A5FA;
+  line-height: 1;
+}
+.hero-stat__label {
+  font-size: 0.65rem;
+  font-weight: var(--w-medium);
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.hero-stat__divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* Scroll arrow */
+.page-hero__scroll {
+  position: absolute;
+  bottom: var(--s-7);
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.25);
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: none; }
 }
 
 /* ── Misión / Visión ── */
-.mv-sec { background: var(--c-bg); }
+.mv-sec {
+  background: var(--c-bg);
+  padding-block: var(--s-20);
+}
+.mv-header { margin-bottom: var(--s-12); }
+
 .mv-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -209,17 +360,41 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
   display: flex;
   flex-direction: column;
   gap: var(--s-5);
-  transition: box-shadow var(--t-slow), border-color var(--t);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease, transform 0.3s ease, border-color 0.2s;
+}
+.mv-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c-electric) 4%, transparent) 0%, transparent 60%);
+  pointer-events: none;
 }
 .mv-card:hover {
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-  border-color: color-mix(in srgb, var(--c-electric) 25%, transparent);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--c-electric) 30%, transparent);
+}
+.mv-card__accent {
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--c-electric), color-mix(in srgb, var(--c-electric) 40%, transparent));
+  border-radius: 4px 0 0 4px;
+}
+.mv-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
 }
 .mv-card__icon {
-  width: 60px;
-  height: 60px;
-  background: color-mix(in srgb, var(--c-electric) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--c-electric) 20%, transparent);
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--c-electric) 12%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--c-electric) 25%, transparent);
   border-radius: var(--r-md);
   display: flex;
   align-items: center;
@@ -236,84 +411,189 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
   font-size: var(--text-base);
   color: var(--c-text-muted);
   line-height: 1.8;
+  padding-left: calc(56px + var(--s-4));
+}
+@media (max-width: 480px) {
+  .mv-card__text { padding-left: 0; }
 }
 
 /* ── Valores ── */
-.values-sec { background: var(--c-bg-2); }
+.values-sec {
+  background: #0D1117;
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--s-20);
+  --c-text: #F9FAFB;
+  --c-text-muted: #9CA3AF;
+}
+.values-sec__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 10% 20%, rgba(30,58,138,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 90% 80%, rgba(30,58,138,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.values-sec .sh__eyebrow { color: #60A5FA; }
+.values-sec .sh__title { color: #F9FAFB; }
+.values-sec .sh__sub {
+  font-size: var(--text-base);
+  color: #6B7280;
+  max-width: 480px;
+  margin: var(--s-3) auto 0;
+  line-height: 1.65;
+}
+
 .values-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--s-5);
+  gap: var(--s-4);
+  margin-top: var(--s-12);
 }
 @media (min-width: 640px)  { .values-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .values-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .value-card {
-  background: var(--c-bg);
-  border: 1px solid var(--c-border);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
   border-radius: var(--r-lg);
   padding: var(--s-7);
   display: flex;
   flex-direction: column;
   gap: var(--s-3);
-  transition: transform var(--t-slow), box-shadow var(--t-slow), border-color var(--t);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.2s, background 0.2s;
+}
+.value-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--c-electric), color-mix(in srgb, var(--c-electric) 20%, transparent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
 }
 .value-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.07);
-  border-color: color-mix(in srgb, var(--c-electric) 25%, transparent);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  border-color: rgba(96,165,250,0.2);
+  background: rgba(255,255,255,0.05);
+}
+.value-card:hover::after { transform: scaleX(1); }
+
+.value-card__num {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: var(--w-bold);
+  color: rgba(96,165,250,0.4);
+  letter-spacing: 0.1em;
+  line-height: 1;
 }
 .value-card__icon {
-  width: 48px;
-  height: 48px;
-  background: color-mix(in srgb, var(--c-electric) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--c-electric) 15%, transparent);
-  border-radius: var(--r-sm);
+  width: 50px;
+  height: 50px;
+  background: rgba(96,165,250,0.1);
+  border: 1px solid rgba(96,165,250,0.2);
+  border-radius: var(--r-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--c-electric);
+  color: #60A5FA;
+  margin-top: var(--s-1);
+  transition: background 0.2s, border-color 0.2s;
+}
+.value-card:hover .value-card__icon {
+  background: rgba(96,165,250,0.18);
+  border-color: rgba(96,165,250,0.4);
 }
 .value-card__name {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: var(--w-bold);
-  color: var(--c-text);
+  color: #F9FAFB;
+  margin-top: var(--s-1);
 }
 .value-card__desc {
   font-size: var(--text-sm);
-  color: var(--c-text-muted);
-  line-height: 1.6;
+  color: #6B7280;
+  line-height: 1.65;
 }
 
 /* ── CTA ── */
-.cta-sec { background: var(--c-electric); }
+.cta-sec {
+  background: var(--c-bg);
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--s-20);
+}
+.cta-sec__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--c-electric) 0%, color-mix(in srgb, var(--c-electric) 70%, #0D1117) 100%);
+}
+.cta-sec__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 70%);
+}
 .cta-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--s-6);
+  gap: var(--s-8);
 }
 @media (min-width: 768px) {
   .cta-inner { flex-direction: row; justify-content: space-between; text-align: left; }
 }
+.cta-eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--w-semi);
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--s-2);
+}
 .cta-title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: clamp(1.5rem, 3vw, var(--text-3xl));
   font-weight: var(--w-bold);
   color: #fff;
+  line-height: 1.2;
 }
-.cta-sub { font-size: var(--text-base); color: rgba(255,255,255,0.85); margin-top: var(--s-2); }
+.cta-sub {
+  font-size: var(--text-base);
+  color: rgba(255,255,255,0.75);
+  margin-top: var(--s-3);
+  max-width: 440px;
+  line-height: 1.6;
+}
 .cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
   background: #fff;
   color: var(--c-electric);
   border: none;
   flex-shrink: 0;
   font-weight: var(--w-bold);
-  padding: var(--s-3) var(--s-7);
+  font-size: var(--text-base);
+  padding: var(--s-4) var(--s-8);
+  border-radius: var(--r-md);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
-.cta-btn:hover { background: #F0F9FF; }
+.cta-btn:hover {
+  background: #F0F9FF;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+.cta-btn svg { transition: transform 0.2s; }
+.cta-btn:hover svg { transform: translateX(4px); }
 </style>
 
 <script>
@@ -377,7 +657,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
       for (let j = i + 1; j < nodes.length; j++) {
         const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
         if (d > MAX_DIST) continue;
-        ctx!.strokeStyle = `rgba(96,165,250,${(1 - d / MAX_DIST) * 0.2})`;
+        ctx!.strokeStyle = `rgba(96,165,250,${(1 - d / MAX_DIST) * 0.22})`;
         ctx!.lineWidth = 0.8;
         ctx!.beginPath();
         ctx!.moveTo(nodes[i].x, nodes[i].y);
@@ -405,5 +685,14 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
   resize(); init(); raf = requestAnimationFrame(draw);
   window.addEventListener('resize', resize, { passive: true });
+})();
+
+/* Scroll animations */
+(function () {
+  const els = document.querySelectorAll('[data-anim]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
 })();
 </script>
