@@ -60,8 +60,9 @@ const sectorLabels: Record<string, string> = {
         <ul class="proj-grid" id="proj-grid" role="list">
           {projects.map((p, i) => (
             <li
-              class="proj-card"
+              class={`proj-card${(p as any).featured ? ' proj-card--featured' : ''}`}
               data-sector={p.sectorId}
+              data-featured={(p as any).featured ? 'true' : 'false'}
               data-anim
               data-anim-delay={String((i % 3) + 1)}
             >
@@ -79,8 +80,16 @@ const sectorLabels: Record<string, string> = {
               <div class="proj-card__body">
                 <div class="proj-card__meta">
                   <span class="chip chip--electric">{p.sector}</span>
-                  <span class="proj-card__year">{p.year}</span>
+                  <div class="proj-card__meta-right">
+                    {(p as any).featured && (
+                      <span class="proj-card__badge" aria-label="Proyecto destacado">★ Destacado</span>
+                    )}
+                    <span class="proj-card__year">{p.year}</span>
+                  </div>
                 </div>
+                {(p as any).featured && (
+                  <p class="proj-card__client">{p.client}</p>
+                )}
                 <h2 class="proj-card__title">
                   <a href={`/proyectos/${p.slug}/`}>{p.title}</a>
                 </h2>
@@ -88,6 +97,9 @@ const sectorLabels: Record<string, string> = {
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   {p.location}
                 </p>
+                {(p as any).featured && (
+                  <p class="proj-card__summary">{p.summary}</p>
+                )}
                 <a href={`/proyectos/${p.slug}/`} class="proj-card__link">
                   Ver detalle
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -304,6 +316,81 @@ const sectorLabels: Record<string, string> = {
 
 @media (min-width: 640px)  { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .proj-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ── Featured card ── */
+.proj-card__meta-right {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.proj-card__badge {
+  font-size: 0.65rem;
+  font-weight: var(--w-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: var(--c-electric);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.proj-card__client {
+  font-size: var(--text-xs);
+  font-weight: var(--w-bold);
+  color: var(--c-electric);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--s-1);
+}
+
+.proj-card__summary {
+  font-size: var(--text-sm);
+  color: var(--c-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--s-3);
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  /* Featured ocupa 2 columnas */
+  .proj-card--featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Imagen ocupa toda la altura */
+  .proj-card--featured .proj-card__img-wrap {
+    aspect-ratio: unset;
+    height: 100%;
+    min-height: 280px;
+  }
+
+  /* Título más grande */
+  .proj-card--featured .proj-card__title {
+    font-size: var(--text-2xl);
+  }
+
+  /* Cliente visible */
+  .proj-card--featured .proj-card__client {
+    font-size: var(--text-sm);
+    margin-bottom: var(--s-2);
+  }
+
+  /* Resumen visible */
+  .proj-card--featured .proj-card__summary {
+    display: block;
+  }
+
+  /* Padding más generoso */
+  .proj-card--featured .proj-card__body {
+    padding: var(--s-8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 </style>
 
 <script>

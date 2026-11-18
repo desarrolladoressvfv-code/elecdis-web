@@ -12,7 +12,8 @@
         "cover": "/images/proyectos/pdi-antofagasta/img-03.jpg",
         "coverAlt": "Tableros eléctricos PDI Antofagasta",
         "imageCount": 22,
-        "imageDir": "/images/proyectos/pdi-antofagasta"
+        "imageDir": "/images/proyectos/pdi-antofagasta",
+        "featured": true
     },
     {
         "slug": "pdi-calama",
@@ -162,7 +163,8 @@
         "cover": "/images/proyectos/detergentes-libesa-quilicura/img-01.jpg",
         "coverAlt": "Tableros eléctricos planta Libesa Quilicura",
         "imageCount": 9,
-        "imageDir": "/images/proyectos/detergentes-libesa-quilicura"
+        "imageDir": "/images/proyectos/detergentes-libesa-quilicura",
+        "featured": true
     },
     {
         "slug": "andes-salud-chillan-sr",
@@ -192,7 +194,8 @@
         "cover": "/images/proyectos/kfc/img-01.jpg",
         "coverAlt": "Tablero eléctrico KFC Chile",
         "imageCount": 1,
-        "imageDir": "/images/proyectos/kfc"
+        "imageDir": "/images/proyectos/kfc",
+        "featured": true
     },
     {
         "slug": "achs-vallenar",
@@ -207,7 +210,8 @@
         "cover": "/images/proyectos/achs-vallenar/img-01.jpg",
         "coverAlt": "Tablero eléctrico ACHS Vallenar",
         "imageCount": 1,
-        "imageDir": "/images/proyectos/achs-vallenar"
+        "imageDir": "/images/proyectos/achs-vallenar",
+        "featured": true
     },
     {
         "slug": "lider-panguipulli",
@@ -222,7 +226,8 @@
         "cover": "/images/proyectos/lider-panguipulli/img-01.jpg",
         "coverAlt": "Tablero eléctrico Express de Líder Panguipulli",
         "imageCount": 1,
-        "imageDir": "/images/proyectos/lider-panguipulli"
+        "imageDir": "/images/proyectos/lider-panguipulli",
+        "featured": true
     },
     {
         "slug": "expro",
