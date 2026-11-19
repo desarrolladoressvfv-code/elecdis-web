@@ -67,28 +67,33 @@ const sectorLabels: Record<string, string> = {
               data-anim-delay={String((i % 3) + 1)}
             >
               {(p as any).featured ? (
-                /* ── Featured: imagen grande con overlay editorial ── */
-                <a href={`/proyectos/${p.slug}/`} class="proj-card__img-wrap">
-                  <img
-                    src={p.cover}
-                    alt={p.coverAlt}
-                    class="proj-card__img"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="proj-card__editorial" aria-hidden="true">
-                    <div class="proj-card__editorial-inner">
-                      <span class="chip chip--ghost">{p.sector}</span>
-                      <p class="proj-card__editorial-client">{p.client}</p>
-                      <h2 class="proj-card__editorial-title">{p.title}</h2>
-                      <p class="proj-card__editorial-loc">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        {p.location} · {p.year}
-                      </p>
-                    </div>
-                    <span class="proj-card__editorial-cta">Ver proyecto →</span>
+                /* ── Featured: split diagonal foto/texto ── */
+                <>
+                  <a href={`/proyectos/${p.slug}/`} class="proj-card__split-img" tabindex="-1" aria-hidden="true">
+                    <img
+                      src={p.cover}
+                      alt={p.coverAlt}
+                      class="proj-card__img"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </a>
+                  <div class="proj-card__split-body">
+                    <span class="chip chip--electric">{p.sector}</span>
+                    <p class="proj-card__split-client">{p.client}</p>
+                    <h2 class="proj-card__split-title">
+                      <a href={`/proyectos/${p.slug}/`}>{p.title}</a>
+                    </h2>
+                    <p class="proj-card__location">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      {p.location} · {p.year}
+                    </p>
+                    <a href={`/proyectos/${p.slug}/`} class="proj-card__link">
+                      Ver detalle
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
                   </div>
-                </a>
+                </>
               ) : (
                 /* ── Normal card ── */
                 <>
@@ -333,120 +338,86 @@ const sectorLabels: Record<string, string> = {
 @media (min-width: 640px)  { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .proj-grid { grid-template-columns: repeat(3, 1fr); } }
 
-/* ── Featured card — editorial ── */
-
-/* Chip ghost para usar sobre imagen oscura */
-.chip--ghost {
-  font-size: 0.65rem;
-  font-weight: var(--w-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.9);
-  border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.12);
-  padding: 3px 10px;
-  border-radius: 999px;
-  backdrop-filter: blur(4px);
-  display: inline-block;
-  margin-bottom: var(--s-3);
-}
+/* ── Featured card — split diagonal ── */
 
 /* Featured: ocupa 2 columnas en desktop */
 @media (min-width: 1024px) {
   .proj-card--featured { grid-column: span 2; }
 }
 
-/* La imagen featured es más alta y sin body separado */
-.proj-card--featured .proj-card__img-wrap {
-  aspect-ratio: 16/7;
+/* En mobile la card featured es vertical (imagen arriba, texto abajo) */
+.proj-card--featured {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen del split */
+.proj-card__split-img {
   display: block;
   position: relative;
   overflow: hidden;
+  aspect-ratio: 16/9;
+  flex-shrink: 0;
 }
 
-@media (min-width: 1024px) {
-  .proj-card--featured .proj-card__img-wrap {
-    aspect-ratio: 21/9;
+/* En desktop: layout horizontal con diagonal */
+@media (min-width: 768px) {
+  .proj-card--featured {
+    flex-direction: row;
+    min-height: 260px;
+  }
+
+  .proj-card__split-img {
+    width: 56%;
+    aspect-ratio: unset;
+    /* Corte diagonal: la foto termina en diagonal hacia la derecha */
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+    margin-right: -8%;
+    z-index: 1;
+  }
+
+  .proj-card__split-body {
+    flex: 1;
+    padding: var(--s-7) var(--s-7) var(--s-7) calc(var(--s-7) + 4%);
   }
 }
 
-/* Gradiente editorial en la parte inferior de la imagen */
-.proj-card__editorial {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(5,10,20,0.92) 0%,
-    rgba(5,10,20,0.6) 40%,
-    rgba(5,10,20,0.1) 70%,
-    transparent 100%
-  );
+.proj-card__split-img .proj-card__img {
+  transition: transform 0.5s ease;
+}
+.proj-card--featured:hover .proj-card__split-img .proj-card__img {
+  transform: scale(1.05);
+}
+
+/* Texto del split */
+.proj-card__split-body {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: var(--s-6) var(--s-7);
-  transition: background 0.4s ease;
+  justify-content: center;
+  gap: var(--s-3);
+  padding: var(--s-5) var(--s-6) var(--s-6);
 }
 
-.proj-card--featured:hover .proj-card__editorial {
-  background: linear-gradient(
-    to top,
-    rgba(5,10,20,0.97) 0%,
-    rgba(5,10,20,0.75) 50%,
-    rgba(5,10,20,0.2) 80%,
-    transparent 100%
-  );
-}
-
-@media (min-width: 1024px) {
-  .proj-card__editorial {
-    padding: var(--s-8) var(--s-10);
-  }
-}
-
-.proj-card__editorial-inner { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
-
-.proj-card__editorial-client {
+.proj-card__split-client {
   font-size: var(--text-xs);
   font-weight: var(--w-bold);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: var(--s-1);
+  letter-spacing: 0.12em;
+  color: var(--c-electric);
+  margin-top: var(--s-2);
 }
 
-.proj-card__editorial-title {
+.proj-card__split-title {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
+  font-size: clamp(var(--text-lg), 1.8vw, var(--text-2xl));
   font-weight: var(--w-bold);
-  color: #fff;
-  line-height: 1.2;
-  margin-bottom: var(--s-2);
+  line-height: 1.25;
 }
-
-.proj-card__editorial-loc {
-  display: flex;
-  align-items: center;
-  gap: var(--s-1);
-  font-size: var(--text-sm);
-  color: rgba(255,255,255,0.5);
+.proj-card__split-title a {
+  color: var(--c-text);
+  transition: color var(--t);
 }
-.proj-card__editorial-loc svg { flex-shrink: 0; }
-
-.proj-card__editorial-cta {
-  font-size: var(--text-sm);
-  font-weight: var(--w-semi);
-  color: rgba(255,255,255,0.75);
-  margin-top: var(--s-4);
-  align-self: flex-end;
-  transition: color var(--t), transform var(--t);
-  flex-shrink: 0;
-}
-.proj-card--featured:hover .proj-card__editorial-cta {
-  color: #fff;
-  transform: translateX(4px);
-}
+.proj-card__split-title a:hover { color: var(--c-electric); }
 </style>
 
 <script>
