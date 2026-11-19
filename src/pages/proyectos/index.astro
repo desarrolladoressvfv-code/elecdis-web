@@ -79,19 +79,21 @@ const sectorLabels: Record<string, string> = {
                     />
                   </a>
                   <div class="proj-card__split-body">
-                    <span class="chip chip--electric">{p.sector}</span>
-                    <p class="proj-card__split-client">{p.client}</p>
-                    <h2 class="proj-card__split-title">
-                      <a href={`/proyectos/${p.slug}/`}>{p.title}</a>
-                    </h2>
-                    <p class="proj-card__location">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                      {p.location} · {p.year}
-                    </p>
-                    <a href={`/proyectos/${p.slug}/`} class="proj-card__link">
-                      Ver detalle
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
+                    <div class="proj-card__split-content">
+                      <span class="chip chip--electric">{p.sector}</span>
+                      <p class="proj-card__split-client">{p.client}</p>
+                      <h2 class="proj-card__split-title">
+                        <a href={`/proyectos/${p.slug}/`}>{p.title}</a>
+                      </h2>
+                      <p class="proj-card__location">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        {p.location} · {p.year}
+                      </p>
+                      <a href={`/proyectos/${p.slug}/`} class="proj-card__link">
+                        Ver detalle
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </a>
+                    </div>
                   </div>
                 </>
               ) : (
@@ -336,7 +338,7 @@ const sectorLabels: Record<string, string> = {
 }
 
 @media (min-width: 640px)  { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .proj-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 768px)  { .proj-grid { grid-template-columns: repeat(3, 1fr); } }
 
 /* ── Featured card — ancho completo, split limpio ── */
 
@@ -381,10 +383,9 @@ const sectorLabels: Record<string, string> = {
 /* Panel azul con gradiente */
 .proj-card__split-body {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: var(--s-3);
-  padding: var(--s-7) var(--s-10) var(--s-7) var(--s-9);
+  padding: var(--s-6) var(--s-8);
   background:
     radial-gradient(ellipse at 90% 10%, rgba(59,130,246,0.22) 0%, transparent 55%),
     radial-gradient(ellipse at 10% 90%, rgba(37,99,235,0.15) 0%, transparent 50%),
@@ -401,6 +402,15 @@ const sectorLabels: Record<string, string> = {
   width: 3px;
   background: linear-gradient(to bottom, transparent, #3b82f6, transparent);
   border-radius: 999px;
+}
+
+/* Bloque de contenido centrado dentro del panel */
+.proj-card__split-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  width: 100%;
+  max-width: 340px;
 }
 
 .proj-card__split-body .chip--electric {
