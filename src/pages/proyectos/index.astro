@@ -378,14 +378,29 @@ const sectorLabels: Record<string, string> = {
   transform: scale(1.04);
 }
 
-/* Panel azul oscuro */
+/* Panel azul con gradiente */
 .proj-card__split-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--s-3);
-  padding: var(--s-6) var(--s-7);
-  background: #0D1B3E;
+  padding: var(--s-7) var(--s-10) var(--s-7) var(--s-9);
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(59,130,246,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 90%, rgba(37,99,235,0.15) 0%, transparent 50%),
+    #152966;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea decorativa sutil en el borde izquierdo */
+.proj-card__split-body::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10%; bottom: 10%;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, #3b82f6, transparent);
+  border-radius: 999px;
 }
 
 .proj-card__split-body .chip--electric {
