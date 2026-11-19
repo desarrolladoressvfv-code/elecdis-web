@@ -338,17 +338,23 @@ const sectorLabels: Record<string, string> = {
 @media (min-width: 640px)  { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .proj-grid { grid-template-columns: repeat(3, 1fr); } }
 
-/* ── Featured card — split diagonal ── */
+/* ── Featured card — ancho completo, split con panel azul ── */
 
-/* Featured: ocupa 2 columnas en desktop */
-@media (min-width: 1024px) {
-  .proj-card--featured { grid-column: span 2; }
-}
-
-/* En mobile la card featured es vertical (imagen arriba, texto abajo) */
+/* Featured siempre ocupa toda la fila */
 .proj-card--featured {
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
+  border: none;
+  overflow: hidden;
+}
+
+/* En desktop: layout horizontal con diagonal */
+@media (min-width: 768px) {
+  .proj-card--featured {
+    flex-direction: row;
+    min-height: 300px;
+  }
 }
 
 /* Imagen del split */
@@ -360,25 +366,21 @@ const sectorLabels: Record<string, string> = {
   flex-shrink: 0;
 }
 
-/* En desktop: layout horizontal con diagonal */
 @media (min-width: 768px) {
-  .proj-card--featured {
-    flex-direction: row;
-    min-height: 260px;
-  }
-
   .proj-card__split-img {
-    width: 56%;
+    width: 55%;
     aspect-ratio: unset;
-    /* Corte diagonal: la foto termina en diagonal hacia la derecha */
-    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
-    margin-right: -8%;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    margin-right: -6%;
     z-index: 1;
   }
+}
 
-  .proj-card__split-body {
-    flex: 1;
-    padding: var(--s-7) var(--s-7) var(--s-7) calc(var(--s-7) + 4%);
+@media (min-width: 1024px) {
+  .proj-card__split-img {
+    width: 58%;
+    clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+    margin-right: -7%;
   }
 }
 
@@ -386,38 +388,63 @@ const sectorLabels: Record<string, string> = {
   transition: transform 0.5s ease;
 }
 .proj-card--featured:hover .proj-card__split-img .proj-card__img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* Texto del split */
+/* Panel azul oscuro */
 .proj-card__split-body {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--s-3);
-  padding: var(--s-5) var(--s-6) var(--s-6);
+  padding: var(--s-7) var(--s-8) var(--s-7) var(--s-9);
+  background: #0D1B3E;
+}
+
+@media (max-width: 767px) {
+  .proj-card__split-body {
+    padding: var(--s-6) var(--s-6) var(--s-7);
+  }
+}
+
+.proj-card__split-body .chip--electric {
+  background: rgba(96,165,250,0.15);
+  color: #93c5fd;
+  border-color: rgba(96,165,250,0.3);
+  width: fit-content;
 }
 
 .proj-card__split-client {
   font-size: var(--text-xs);
   font-weight: var(--w-bold);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--c-electric);
-  margin-top: var(--s-2);
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.45);
+  margin-top: var(--s-1);
 }
 
 .proj-card__split-title {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-lg), 1.8vw, var(--text-2xl));
+  font-size: clamp(var(--text-xl), 2vw, var(--text-3xl));
   font-weight: var(--w-bold);
-  line-height: 1.25;
+  line-height: 1.2;
 }
 .proj-card__split-title a {
-  color: var(--c-text);
+  color: #fff;
   transition: color var(--t);
 }
-.proj-card__split-title a:hover { color: var(--c-electric); }
+.proj-card__split-title a:hover { color: #93c5fd; }
+
+.proj-card__split-body .proj-card__location {
+  color: rgba(255,255,255,0.4);
+}
+.proj-card__split-body .proj-card__location svg { color: rgba(255,255,255,0.35); }
+
+.proj-card__split-body .proj-card__link {
+  color: #93c5fd;
+  margin-top: var(--s-1);
+}
 </style>
 
 <script>
