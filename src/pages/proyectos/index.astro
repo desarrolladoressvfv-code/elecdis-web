@@ -380,28 +380,25 @@ const sectorLabels: Record<string, string> = {
   transform: scale(1.04);
 }
 
-/* Panel azul con gradiente */
+/* Panel claro — Opción B */
 .proj-card__split-body {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--s-6) var(--s-8);
-  background:
-    radial-gradient(ellipse at 90% 10%, rgba(59,130,246,0.22) 0%, transparent 55%),
-    radial-gradient(ellipse at 10% 90%, rgba(37,99,235,0.15) 0%, transparent 50%),
-    #152966;
+  background: #EFF6FF;
   position: relative;
   overflow: hidden;
+  border-left: .5px solid #BFDBFE;
 }
 
-/* Línea decorativa sutil en el borde izquierdo */
+/* Barra de acento superior */
 .proj-card__split-body::before {
   content: '';
   position: absolute;
-  left: 0; top: 10%; bottom: 10%;
-  width: 3px;
-  background: linear-gradient(to bottom, transparent, #3b82f6, transparent);
-  border-radius: 999px;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #1d4ed8, #60a5fa);
 }
 
 /* Bloque de contenido centrado dentro del panel */
@@ -414,9 +411,9 @@ const sectorLabels: Record<string, string> = {
 }
 
 .proj-card__split-body .chip--electric {
-  background: rgba(96,165,250,0.15);
-  color: #93c5fd;
-  border-color: rgba(96,165,250,0.25);
+  background: #DBEAFE;
+  color: #1d4ed8;
+  border-color: #BFDBFE;
   width: fit-content;
 }
 
@@ -425,7 +422,7 @@ const sectorLabels: Record<string, string> = {
   font-weight: var(--w-bold);
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: rgba(255,255,255,0.45);
+  color: #3b82f6;
 }
 
 .proj-card__split-title {
@@ -434,12 +431,12 @@ const sectorLabels: Record<string, string> = {
   font-weight: var(--w-bold);
   line-height: 1.25;
 }
-.proj-card__split-title a { color: #fff; transition: color var(--t); }
-.proj-card__split-title a:hover { color: #93c5fd; }
+.proj-card__split-title a { color: #1e3a8a; transition: color var(--t); }
+.proj-card__split-title a:hover { color: #1d4ed8; }
 
-.proj-card__split-body .proj-card__location { color: rgba(255,255,255,0.4); }
-.proj-card__split-body .proj-card__location svg { color: rgba(255,255,255,0.3); }
-.proj-card__split-body .proj-card__link { color: #93c5fd; }
+.proj-card__split-body .proj-card__location { color: #64748b; }
+.proj-card__split-body .proj-card__location svg { color: #3b82f6; }
+.proj-card__split-body .proj-card__link { color: #1d4ed8; }
 </style>
 
 <script>
