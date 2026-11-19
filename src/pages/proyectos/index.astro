@@ -338,22 +338,25 @@ const sectorLabels: Record<string, string> = {
 @media (min-width: 640px)  { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .proj-grid { grid-template-columns: repeat(3, 1fr); } }
 
-/* ── Featured card — ancho completo, split con panel azul ── */
+/* ── Featured card — ancho completo, split limpio ── */
 
-/* Featured siempre ocupa toda la fila */
+/* Mobile: igual que card normal, solo más ancha */
 .proj-card--featured {
   grid-column: 1 / -1;
-  display: flex;
-  flex-direction: column;
-  border: none;
-  overflow: hidden;
 }
 
-/* En desktop: layout horizontal con diagonal */
-@media (min-width: 768px) {
+/* Desktop: dos columnas, altura fija igual a las otras cards */
+@media (min-width: 640px) {
   .proj-card--featured {
-    flex-direction: row;
-    min-height: 300px;
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    height: 320px;
+  }
+
+  /* Imagen llena su celda */
+  .proj-card--featured .proj-card__split-img {
+    aspect-ratio: unset;
+    height: 100%;
   }
 }
 
@@ -363,28 +366,12 @@ const sectorLabels: Record<string, string> = {
   position: relative;
   overflow: hidden;
   aspect-ratio: 16/9;
-  flex-shrink: 0;
-}
-
-@media (min-width: 768px) {
-  .proj-card__split-img {
-    width: 55%;
-    aspect-ratio: unset;
-    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
-    margin-right: -6%;
-    z-index: 1;
-  }
-}
-
-@media (min-width: 1024px) {
-  .proj-card__split-img {
-    width: 58%;
-    clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
-    margin-right: -7%;
-  }
 }
 
 .proj-card__split-img .proj-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 .proj-card--featured:hover .proj-card__split-img .proj-card__img {
@@ -393,25 +380,18 @@ const sectorLabels: Record<string, string> = {
 
 /* Panel azul oscuro */
 .proj-card__split-body {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--s-3);
-  padding: var(--s-7) var(--s-8) var(--s-7) var(--s-9);
+  padding: var(--s-6) var(--s-7);
   background: #0D1B3E;
-}
-
-@media (max-width: 767px) {
-  .proj-card__split-body {
-    padding: var(--s-6) var(--s-6) var(--s-7);
-  }
 }
 
 .proj-card__split-body .chip--electric {
   background: rgba(96,165,250,0.15);
   color: #93c5fd;
-  border-color: rgba(96,165,250,0.3);
+  border-color: rgba(96,165,250,0.25);
   width: fit-content;
 }
 
@@ -421,30 +401,20 @@ const sectorLabels: Record<string, string> = {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: rgba(255,255,255,0.45);
-  margin-top: var(--s-1);
 }
 
 .proj-card__split-title {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-xl), 2vw, var(--text-3xl));
+  font-size: clamp(var(--text-lg), 1.6vw, var(--text-2xl));
   font-weight: var(--w-bold);
-  line-height: 1.2;
+  line-height: 1.25;
 }
-.proj-card__split-title a {
-  color: #fff;
-  transition: color var(--t);
-}
+.proj-card__split-title a { color: #fff; transition: color var(--t); }
 .proj-card__split-title a:hover { color: #93c5fd; }
 
-.proj-card__split-body .proj-card__location {
-  color: rgba(255,255,255,0.4);
-}
-.proj-card__split-body .proj-card__location svg { color: rgba(255,255,255,0.35); }
-
-.proj-card__split-body .proj-card__link {
-  color: #93c5fd;
-  margin-top: var(--s-1);
-}
+.proj-card__split-body .proj-card__location { color: rgba(255,255,255,0.4); }
+.proj-card__split-body .proj-card__location svg { color: rgba(255,255,255,0.3); }
+.proj-card__split-body .proj-card__link { color: #93c5fd; }
 </style>
 
 <script>
