@@ -12,10 +12,8 @@
     "whatsappMessage": "Hola ELECDIS, me gustaría solicitar una cotización."
   },
   "stats": [
-    { "value": 1200, "suffix": "+", "label": "Cotizaciones" },
-    { "value": 300, "suffix": "+", "label": "Proyectos ejecutados" },
-    { "value": 12,   "suffix": "",  "label": "Certificaciones" },
-    { "value": 200,  "suffix": "+", "label": "Clientes satisfechos" }
+    { "value": 100, "suffix": "+", "label": "Certificaciones" },
+    { "value": 300, "suffix": "+", "label": "Clientes satisfechos" }
   ],
   "seo": {
     "title": "ELECDIS – Electricidad & Diseño | Soluciones eléctricas en Santiago",
