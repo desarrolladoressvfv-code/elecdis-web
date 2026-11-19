@@ -387,6 +387,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 .mv-card__header {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--s-4);
 }
 .mv-card__icon {
@@ -411,10 +412,8 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
   font-size: var(--text-base);
   color: var(--c-text-muted);
   line-height: 1.8;
-  padding-left: calc(56px + var(--s-4));
-}
-@media (max-width: 480px) {
-  .mv-card__text { padding-left: 0; }
+  padding: 0 var(--s-6);
+  text-align: center;
 }
 
 /* ── Valores ── */
